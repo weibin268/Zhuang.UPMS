@@ -13,7 +13,7 @@ namespace Zhuang.UPMS.WebApi.Controllers
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SecUser GetUserById(string userId)
+        public SecUser GetById(string userId)
         {
             return _dba.QueryEntity<SecUser>("select * from sec_user where UserId=#UserId#", new { UserId = userId });
         }
