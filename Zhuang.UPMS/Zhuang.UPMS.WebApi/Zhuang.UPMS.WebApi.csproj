@@ -66,8 +66,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Zhuang.Data">
-      <HintPath>..\packages\Zhuang.Data.1.1.0\lib\Zhuang.Data.dll</HintPath>
+    <Reference Include="Zhuang.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zhuang.Data.1.1.2\lib\Zhuang.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Zhuang.Model.Common">
       <HintPath>..\..\..\Zhuang.ORM\Zhuang.Model.Common\bin\Debug\Zhuang.Model.Common.dll</HintPath>
