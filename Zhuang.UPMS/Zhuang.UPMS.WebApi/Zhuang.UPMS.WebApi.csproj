@@ -114,6 +114,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zhuang.UPMS.BLL\Zhuang.UPMS.BLL.csproj">
+      <Project>{e31a2396-a28c-4dbb-a4d2-ecb9a3ac4af2}</Project>
+      <Name>Zhuang.UPMS.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

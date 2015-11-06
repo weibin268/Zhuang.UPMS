@@ -11,18 +11,17 @@ using Zhuang.Data;
 using Zhuang.Data.Common;
 using Zhuang.Data.SqlCommands.Store;
 using Zhuang.Model.Common;
+using Zhuang.UPMS.BLL;
 
 namespace Zhuang.UPMS.WebApi.Controllers
 {
     public class UserController : ApiController
     {
-        DbAccessor _dba = DbAccessor.Get();
+        UserService _service = new UserService();
 
-        public SecUser GetById(string userId)
+        public SecUser GetUserById(string userId)
         {
-
-            return _dba.QueryEntity<SecUser>("Security.SecUser.GetById", new { UserId = userId });
-
+            return _service.GetUserById(userId);
         }
     }
 }
