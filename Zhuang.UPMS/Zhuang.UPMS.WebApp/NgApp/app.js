@@ -12,7 +12,7 @@ app.config(function ($routeProvider) {
 });
 
 
-var serviceBase = 'http://localhost:8002/';
+var serviceBase = 'http://localhost:8002/webapi/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'zwbApp'
