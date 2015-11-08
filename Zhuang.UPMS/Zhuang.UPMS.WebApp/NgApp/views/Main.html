@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="main-app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+
+    <script src="../../Scripts/jquery-2.1.4.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script src="../../Scripts/angular-route.js"></script>
+    <!--<script src="../../Scripts/jquery.easyui-1.4.3.js"></script>-->
+
+    <!--angular app-->
+    <script src="../app.js?v=4"></script>
+
+    <!--angular services-->
+    <script src="../services/userService.js?v=2"></script>
+
+    <!--angular controllers-->
+    <script src="../controllers/userCtrl.js?v=1"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+</head>
+<body>
+    <h1>Main</h1>
+    <a href="#/user-list">user list</a>
+
+    <div ng-view="">
+    </div>
+</body>
+</html>
