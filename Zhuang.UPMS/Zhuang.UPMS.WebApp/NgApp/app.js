@@ -9,6 +9,12 @@ app.config(function ($routeProvider) {
         templateUrl: "./security-console/user-list.html"
     });
 
+    routeProvider.when("/main", {
+        templateUrl: "./main.html"
+    });
+
+    $routeProvider.otherwise({ redirectTo: "/main" });
+
 });
 
 
