@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.BLL", "Zhuang.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.Security", "Zhuang.Security\Zhuang.Security.csproj", "{37D969A9-0AFB-4F66-9E63-44ECE6895782}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.WebApp", "Zhuang.UPMS.WebApp\Zhuang.UPMS.WebApp.csproj", "{9567B620-215F-4A1F-A46F-05FC2B256F59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
