@@ -50,7 +50,7 @@
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\SqlCommands\Security\User.sqlserver.config" />
+    <EmbeddedResource Include="App_Config\SqlCommands\Security\User.sqlserver.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
