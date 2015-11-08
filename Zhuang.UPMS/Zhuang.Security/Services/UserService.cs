@@ -5,7 +5,7 @@ using System.Text;
 using Zhuang.Data;
 using Zhuang.Model.Common;
 
-namespace Zhuang.Security.Service
+namespace Zhuang.Security.Services
 {
     public class UserService
     {
