@@ -5,7 +5,7 @@ using System.Text;
 using Zhuang.Data;
 using Zhuang.Model.Common;
 
-namespace Zhuang.UPMS.BLL
+namespace Zhuang.Security.Service
 {
     public class UserService
     {

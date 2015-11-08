@@ -115,6 +115,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Zhuang.Security\Zhuang.Security.csproj">
+      <Project>{37d969a9-0afb-4f66-9e63-44ece6895782}</Project>
+      <Name>Zhuang.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Zhuang.UPMS.BLL\Zhuang.UPMS.BLL.csproj">
       <Project>{e31a2396-a28c-4dbb-a4d2-ecb9a3ac4af2}</Project>
       <Name>Zhuang.UPMS.BLL</Name>
