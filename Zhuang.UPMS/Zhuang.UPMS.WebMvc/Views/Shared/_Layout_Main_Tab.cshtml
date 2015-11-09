@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Lib/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Lib/easyui/themes/default/easyui.css" rel="stylesheet" />
+
+    <script src="~/Lib/jquery/jquery.min.js"></script>
+    @*<script src="~/Lib/jquery/jquery.min.js"></script>*@
+    <script src="~/Lib/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Lib/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript">
+        var $dlg1;
+
+        jQuery(function () {
+            $dlg1 = $('#dlg1');
+
+
+        });
+
+        function f_OpenDialog(url,option) {
+            var content = '<div style="height:100%;overflow-y:hidden;">'
+                + '<iframe name="iframe1" scrolling="auto" frameborder="0"  src="' + url
+                + '" style="width:100%;height:100%;"></iframe></div>';
+
+            $dlg1.dialog($.extend({
+                title: ' ',
+                width: 700,
+                height: 400,
+                closed: false,
+                cache: false,
+                modal: true,
+                maximizable: true,
+                maximized: true,
+                resizable: true,
+                loadingMessage: "正在加载……",
+                href: url,
+                //content: content,
+                buttons: "#dlgButtonSaveCancel"
+            }, option));
+        }
+
+        function f_CloseDialog() {
+            $dlg1.dialog('close');
+        }
+
+        function f_SetDialogTitle(title) {
+            $dlg1.dialog("setTitle", title);
+        }
+
+        function f_InitDialogTitle(id) {
+            if (id != 0) {
+                f_SetDialogTitle("修改");
+            } else {
+                f_SetDialogTitle("新增");
+            }
+        }
+
+        function f_LoadingShow(msg) {
+            var ld = $("#loading").show();
+            if (msg) {
+                ld.find(".loading-text").html(msg);
+            }
+        }
+
+        function f_LoadingHide() {
+            $("#loading").hide();
+        }
+
+        function f_AjaxDialogSave(url, $dg)
+        {
+            $.ajax(url, {
+                type: "POST",
+                data: $(document.forms).serialize(),
+                beforeSend: function () {
+                    if (!$(document.forms).form("validate"))
+                        return false;
+
+                    f_LoadingShow("正在保存……");
+                },
+                complete: function () {
+                    f_LoadingHide();
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.Success) {
+                        f_CloseDialog();
+                        if ($dg) {
+                            $dg.datagrid("reload");
+                        }
+                    } else {
+                        alert(data.Message);
+                    }
+                },
+                error: function () {
+                    alert("ajax error!")
+                }
+            });
+        }
+
+        function f_AjaxDelete(url, $dg) {
+
+            var row = $dg.datagrid("getSelected");
+            var idValue = row[$dg.datagrid("options").idField];
+
+            if (!row) {
+                $.messager.alert('提示', '请先选择记录！');
+                return;
+            }
+
+            $.messager.confirm('确认', '确定要删除选中记录吗？', function (r) {
+                if (r) {
+
+                    $.ajax(url, {
+                        type: "POST",
+                        data: { id: idValue },
+                        beforeSend: function () {
+                            f_LoadingShow("正在删除……");
+                        },
+                        complete: function () {
+                            f_LoadingHide();
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.Success) {
+                                $dg.datagrid("reload");
+                            } else {
+                                alert(data.Message);
+                            }
+                        },
+                        error: function () {
+                            alert("ajax error!")
+                        }
+                    });
+                }
+            });
+
+        }
+    </script>
+</head>
+<body>
+    @RenderBody()
+    
+    @*加载遮罩********************@
+    <div id="loading" style="position:absolute;left:0%;top:0%; z-index:10000; opacity:0.5;
+    width:100%;height:100%; display:none; overflow:hidden;background-color:black;">
+        <div style="position: absolute; left: 50%; top: 50%;margin-left:-50px;margin-top:-25px;
+        background-color:white;border:solid 2px #808080;padding:3px;">
+            <span class="panel-loading"></span><span class="loading-text" style="font-size:14px;padding-right:6px;">正在加载…</span>
+        </div>
+    </div>
+    @*******************加载遮罩*@
+
+    @*Dialog**********************@
+    <div style="display:none;">
+        <div id="dlg1">
+        </div>
+        <div id="dlgButtonSaveCancel">
+            <table cellpadding="0" cellspacing="0" style="width:100%">
+                <tr>
+                    <td style="text-align:right">
+                        <a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="f_DialogSave()">保存</a>
+                        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="javascript: f_CloseDialog()">取消</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    @**********************Dialog*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
