@@ -53,7 +53,8 @@
                 if (!exists(rows, row.parentId)) {
                     nodes.push({
                         id: row.id,
-                        text: row.name
+                        text: row.text,
+                        attributes: row.attributes
                     });
                 }
             }
@@ -68,7 +69,7 @@
                 for (var i = 0; i < rows.length; i++) {
                     var row = rows[i];
                     if (row.parentId == node.id) {
-                        var child = { id: row.id, text: row.name };
+                        var child = { id: row.id, text: row.text, attributes: row.attributes };
                         if (node.children) {
                             node.children.push(child);
                         } else {
@@ -88,10 +89,10 @@
             jQuery("#treeMenu").tree({
                 url: '@Url.Content("~/Main/GetMenus")',
                 loadFilter: function (rows) {
-                    debugger;
                     return convert(rows);
                 },
                 onDblClick: function (node) {
+                    debugger;
                     addTab(node.text, node.attributes.url);
                 }
             });

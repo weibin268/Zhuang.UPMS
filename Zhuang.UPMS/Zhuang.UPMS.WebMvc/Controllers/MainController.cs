@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
+using Zhuang.Model.Common;
 using Zhuang.Web.Utility.EasyUI;
 
 namespace Zhuang.UPMS.WebMvc.Controllers
@@ -22,9 +23,20 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         {
             ContentResult contentResult = new ContentResult();
 
-            var lsTree = _dba.QueryEntities<TreeModel>(@"SELECT MenuId AS id,ParentId AS parentId,MenuName AS name 
-                                            FROM dbo.Sys_Menu
-                                            WHERE ModuleType='sys'");
+            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM dbo.Sec_Menu
+            WHERE RecordStatus='Active'");
+
+            List<TreeModel> lsTree = new List<TreeModel>();
+
+            foreach (var item in lsSecMenu)
+            {
+                lsTree.Add(new TreeModel() {
+                    id = item.MenuId,
+                    parentId = item.ParentId,
+                    text=item.Name,
+                    attributes = new { url=item.Url}
+                });
+            }
 
             contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(lsTree);
             return contentResult;

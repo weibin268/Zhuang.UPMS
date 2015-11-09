@@ -9,6 +9,7 @@ namespace Zhuang.Web.Utility.EasyUI
     {
         public string id { get; set; }
         public string parentId { get; set; }
-        public string name { get; set; }
+        public string text { get; set; }
+        public object attributes { get; set; }
     }
 }
