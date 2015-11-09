@@ -1,0 +1,238 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <title></title>
+
+    <script src="~/Lib/jquery/jquery.min.js"></script>
+
+    <style type="text/css">
+        body {
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .login-card {
+            padding: 30px;
+            width: 274px;
+            background-color: #F7F7F7;
+            margin: 150px auto 10px;
+            border-radius: 2px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+            .login-card h1 {
+                margin: 0px;
+                font-weight: 100;
+                text-align: center;
+                font-size: 1.5em;
+            }
+
+            .login-card input[type=button] {
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            .login-card input[type=text], input[type=password] {
+                height: 40px;
+                font-size: 16px;
+                width: 100%;
+                margin-bottom: 10px;
+                -webkit-appearance: none;
+                background: #fff;
+                border: 1px solid #d9d9d9;
+                border-top: 1px solid #c0c0c0;
+                /* border-radius: 2px; */
+                padding: 0 8px;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+
+                .login-card input[type=text]:hover, input[type=password]:hover {
+                    border: 1px solid #b9b9b9;
+                    border-top: 1px solid #a0a0a0;
+                    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+                    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+                    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+                }
+
+        .login {
+            text-align: center;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 700;
+            height: 36px;
+            padding: 0 8px;
+            /* border-radius: 3px; */
+            /* -webkit-user-select: none;
+        user-select: none; */
+        }
+
+        .login-submit {
+            /* border: 1px solid #3079ed; */
+            border: 0px;
+            color: #fff;
+            text-shadow: 0 1px rgba(0,0,0,0.1);
+            background-color: #4d90fe;
+            /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+        }
+
+            .login-submit:hover {
+                /* border: 1px solid #2f5bb7; */
+                border: 0px;
+                text-shadow: 0 1px rgba(0,0,0,0.3);
+                background-color: #357ae8;
+                /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+            }
+
+        .login-card a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 400;
+            text-align: center;
+            display: inline-block;
+            opacity: 0.6;
+            transition: opacity ease 0.5s;
+        }
+
+            .login-card a:hover {
+                opacity: 1;
+            }
+
+        .login-help {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        jQuery(function () {
+
+            $(document).on("keydown", function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e.keyCode == 13) {
+                    f_Login();
+                }
+            });
+
+        });
+
+        function f_Login() {
+
+            var validated = true;
+
+            if ($.trim($("#UserName").val()) == "") {
+                validated = false;
+                $("#tipsUserName").show();
+            } else {
+                $("#tipsUserName").hide();
+            }
+
+            if ($.trim($("#Password").val()) == "") {
+                validated = false;
+                $("#tipsPassword").show();
+            } else {
+                $("#tipsPassword").hide();
+            }
+
+            if ($.trim($("#ValidateCode").val()) == "") {
+                validated = false;
+                $("#tipsValidateCode").show();
+            } else {
+                $("#tipsValidateCode").hide();
+            }
+
+
+            if (!validated)
+                return false;
+
+            var url = '@Url.Content("~/Admin/Login/Login")';
+
+            $.ajax(url, {
+                type: "POST",
+                data: $(document.forms).serialize(),
+                beforeSend: function () {
+                    btnLoginValue = $("#btnLogin").val();
+                    $("#btnLogin").val("登录中……");
+                    $("#btnLogin").attr("disabled", true);
+                },
+                complete: function () {
+
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.Success) {
+                        window.location.href = "@Url.Content("~/Admin/Main/Index")";
+                    } else {
+
+                        alert(data.Message);
+                        if (data.Data == 1 || data.Data == 11) {
+                            $("#ValidateCode").val("").focus();
+                            if (data.Data == 11)
+                            {
+                                f_RefreshCode();
+                            }
+                        } else if (data.Data == 2) {
+                            $("#UserName").val("").focus();
+                        } else if (data.Data == 3) {
+                            $("#Password").val("").focus();
+                        }
+                        $("#btnLogin").val(btnLoginValue);
+                        $("#btnLogin").attr("disabled", false);
+                    }
+                },
+                error: function () {
+                    alert("ajax error!")
+                    $("#btnLogin").val(btnLoginValue);
+                    $("#btnLogin").attr("disabled", false);
+                }
+            });
+
+        }
+
+        //刷新验证码
+        function f_RefreshCode() {
+            $("#imgValidateCode").attr("src", '@Url.Content("~/Admin/Login/GetValidateCode?i=")' + new Date().getTime());
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="login-card">
+            <h1>欢迎登录使用</h1><br>
+            <form>
+                <input id="UserName" type="text" name="UserName" placeholder="用户名">
+                <div id="tipsUserName" style="display:none;color:red;margin-bottom:6px;margin-top:-5px;">请输入用户名！</div>
+                <input id="Password" type="password" name="Password" placeholder="密码">
+                <div id="tipsPassword" style="display: none; color: red; margin-bottom: 6px; margin-top: -5px;">请输入密码！</div>
+                <div>
+                    <div style="float:left">
+                        <input id="ValidateCode" type="text" name="ValidateCode" placeholder="验证码" style="width:100px;height:30px;">
+                    </div>
+                    <div style="float:left;margin-left:20px;margin-top:3px;">
+                        <img id="imgValidateCode" onclick="f_RefreshCode()" style="cursor:hand; width:66px; height:25px;"
+                             src='@Url.Content("~/Admin/Login/GetValidateCode")' />
+                    </div>
+                    <div id="tipsValidateCode" style="display:none;clear:both;color:red;margin-bottom:6px;margin-top:-5px;">请输入验证码！</div>
+                </div>
+                <input type="button" name="Login" id="btnLogin" class="login login-submit" value="登录" onclick="f_Login()">
+            </form>
+
+            @*<div class="login-help">
+                    <a href="#">注册</a> • <a href="#">忘记密码</a>
+                </div>*@
+        </div>
+    </div>
+</body>
+</html>
