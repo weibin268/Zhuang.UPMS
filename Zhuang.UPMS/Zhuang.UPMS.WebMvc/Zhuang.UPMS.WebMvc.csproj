@@ -68,6 +68,10 @@
       <HintPath>..\packages\Zhuang.Data.1.1.2\lib\Zhuang.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Zhuang.Model.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Zhuang.ORM\Zhuang.Model.Common\bin\Debug\Zhuang.Model.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">

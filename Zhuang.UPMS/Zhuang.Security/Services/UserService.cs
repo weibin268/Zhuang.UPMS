@@ -15,5 +15,11 @@ namespace Zhuang.Security.Services
         {
             return _dba.QueryEntity<SecUser>("Security.User.GetUserById", new { UserId = userId });
         }
+
+        public SecUser GetUserByLoginName(string loginName)
+        {
+            return _dba.QueryEntity<SecUser>("Security.User.GetUserBy",
+                new { LoginName = loginName, RecordStatus = RecordStatus.Active });
+        }
     }
 }

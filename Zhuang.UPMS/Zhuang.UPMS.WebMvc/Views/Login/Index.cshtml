@@ -131,11 +131,11 @@
 
             var validated = true;
 
-            if ($.trim($("#UserName").val()) == "") {
+            if ($.trim($("#LoginName").val()) == "") {
                 validated = false;
-                $("#tipsUserName").show();
+                $("#tipsLoginName").show();
             } else {
-                $("#tipsUserName").hide();
+                $("#tipsLoginName").hide();
             }
 
             if ($.trim($("#Password").val()) == "") {
@@ -156,7 +156,7 @@
             if (!validated)
                 return false;
 
-            var url = '@Url.Content("~/Admin/Login/Login")';
+            var url = '@Url.Content("~/Login/Login")';
 
             $.ajax(url, {
                 type: "POST",
@@ -171,7 +171,7 @@
                 },
                 success: function (data, textStatus, jqXHR) {
                     if (data.Success) {
-                        window.location.href = "@Url.Content("~/Admin/Main/Index")";
+                        window.location.href = "@Url.Content("~/Main/Index")";
                     } else {
 
                         alert(data.Message);
@@ -182,7 +182,7 @@
                                 f_RefreshCode();
                             }
                         } else if (data.Data == 2) {
-                            $("#UserName").val("").focus();
+                            $("#LoginName").val("").focus();
                         } else if (data.Data == 3) {
                             $("#Password").val("").focus();
                         }
@@ -212,8 +212,8 @@
         <div class="login-card">
             <h1>欢迎登录使用</h1><br>
             <form>
-                <input id="UserName" type="text" name="UserName" placeholder="用户名">
-                <div id="tipsUserName" style="display:none;color:red;margin-bottom:6px;margin-top:-5px;">请输入用户名！</div>
+                <input id="LoginName" type="text" name="LoginName" placeholder="用户名">
+                <div id="tipsLoginName" style="display:none;color:red;margin-bottom:6px;margin-top:-5px;">请输入用户名！</div>
                 <input id="Password" type="password" name="Password" placeholder="密码">
                 <div id="tipsPassword" style="display: none; color: red; margin-bottom: 6px; margin-top: -5px;">请输入密码！</div>
                 <div>
