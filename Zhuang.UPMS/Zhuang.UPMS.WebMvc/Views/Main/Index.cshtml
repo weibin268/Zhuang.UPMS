@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+@section scripts{
+
+    <style type="text/css">
+        .header-tool {
+            margin-top: 18px;
+            margin-right: 20px;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+            .header-tool a:link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .header-tool a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .header-tool a:hover {
+                color: inherit;
+                text-decoration: underline;
+            }
+
+            .header-tool a:active {
+                color: inherit;
+                text-decoration: underline;
+            }
+    </style>
+
+    <script type="text/javascript">
+
+        var $tabsCenter;
+
+        jQuery(function () {
+
+            $tabsCenter = $('#tabsCenter');
+
+            jQuery("#treeMenu").tree({
+                url: '@Url.Content("~/Admin/Main/GetMenus")',
+                onDblClick: function (node) {
+                    addTab(node.text, node.attributes.url);
+                }
+            });
+
+            $tabsCenter.tabs({
+                border: false,
+                onSelect: function (title) {
+                    //alert(title + ' is selected');
+                }
+            });
+
+        });
+
+        function addTab(title, url) {
+
+            if (!url) return;
+
+            if ($tabsCenter.tabs('exists', title)) {
+                $tabsCenter.tabs('select', title);
+            } else {
+
+                var fullUrl = '@Url.Content("~")' + url;
+                var content = '<div style="height:100%;overflow-y:hidden;">'
+                    + '<iframe scrolling="auto" frameborder="0"  src="' + fullUrl
+                    + '" style="width:100%;height:100%;"></iframe></div>';
+
+                $tabsCenter.tabs('add', {
+                    title: title,
+                    closable: true,
+                    //cache : false,
+                    //href: fullUrl
+                    content: content
+                });
+            }
+
+        }
+
+        function closeCurrentTab() {
+            var tab = $tabsCenter.tabs('getSelected');
+            var index = $tabsCenter.tabs('getTabIndex', tab);
+            $tabsCenter.tabs("close", index);
+        }
+
+    </script>
+
+}
+
+<div data-options="region:'north'" style="height: 50px; background-color: #20375f; padding-left:10px;padding-right:20px; ">
+    <div class="header-tool" style="float:right;">
+        <a href='@Url.Action("Logout","Login")'>退出</a>
+    </div>
+    <div class="header-tool" style="float:right;">
+        <span>欢迎：</span><span>@Zhuang.Security.SecurityContext.Current.User.LoginName</span>
+    </div>
+</div>
+@*<div data-options="region:'south',split:true" style="height:50px;"></div>*@
+@*<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>*@
+<div data-options="region:'west',split:true" title="菜单导航" style="width:200px;">
+    <ul id="treeMenu"></ul>
+</div>
+<div data-options="region:'center'">
+    <div id="tabsCenter" class="easyui-tabs" fit="true" plain="true">
+        <div title="主页">
+
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Zhuang.Model.Common;
+using Zhuang.Security;
 using Zhuang.Security.Services;
 using Zhuang.Web.Utility.Images;
 
@@ -54,7 +55,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 }
                 else
                 {
-                    Session["SecurityContext"] = model;
+                    SecurityContext.Current = new SecurityContext() { User = model };
                     //Session[SSessionIndex.IsAuthorizedForCKEditor] = true;
                     mjr.Success = true;
                 }
@@ -66,8 +67,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
 
         public ActionResult Logout()
         {
-            Session["SecurityContext"] = null;
-
+            SecurityContext.Current = null;
             return View("Index");
         }
 

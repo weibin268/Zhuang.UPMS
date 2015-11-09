@@ -2,12 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using Zhuang.Model.Common;
 
 namespace Zhuang.Security
 {
     public class SecurityContext
     {
+        private const string Key = "SecurityContext";
+
         public SecUser User { get; set; }
+
+        public static SecurityContext Current
+        {
+            get
+            {
+                var result = HttpContext.Current.Session[Key];
+                if (result == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (SecurityContext)result;
+                }
+
+            }
+            set
+            {
+                HttpContext.Current.Session[Key] = value;
+            }
+        }
     }
 }
