@@ -142,6 +142,16 @@
     <Folder Include="Areas\Portal\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zhuang.Security\Zhuang.Security.csproj">
+      <Project>{37d969a9-0afb-4f66-9e63-44ece6895782}</Project>
+      <Name>Zhuang.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zhuang.Web.Utility\Zhuang.Web.Utility.csproj">
+      <Project>{e0d101fa-d0fb-43d2-ae63-5cec03fde279}</Project>
+      <Name>Zhuang.Web.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

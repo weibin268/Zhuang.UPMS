@@ -6,8 +6,8 @@
 <head>
     <title></title>
 
-    <script src="~/Lib/jquery/jquery.min.js"></script>
-
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
     <style type="text/css">
         body {
             -webkit-background-size: cover;
@@ -201,7 +201,7 @@
 
         //刷新验证码
         function f_RefreshCode() {
-            $("#imgValidateCode").attr("src", '@Url.Content("~/Admin/Login/GetValidateCode?i=")' + new Date().getTime());
+            $("#imgValidateCode").attr("src", '@Url.Content("~/Login/GetValidateCode?i=")' + new Date().getTime());
         }
 
     </script>
@@ -222,7 +222,7 @@
                     </div>
                     <div style="float:left;margin-left:20px;margin-top:3px;">
                         <img id="imgValidateCode" onclick="f_RefreshCode()" style="cursor:hand; width:66px; height:25px;"
-                             src='@Url.Content("~/Admin/Login/GetValidateCode")' />
+                             src='@Url.Content("~/Login/GetValidateCode")' />
                     </div>
                     <div id="tipsValidateCode" style="display:none;clear:both;color:red;margin-bottom:6px;margin-top:-5px;">请输入验证码！</div>
                 </div>
