@@ -145,7 +145,8 @@
         <a href='@Url.Action("Logout","Login")'>退出</a>
     </div>
     <div class="header-tool" style="float:right;">
-        <span>欢迎：</span><span>@Zhuang.Security.SecurityContext.Current.User.LoginName</span>
+        <span>欢迎：</span><span>@Zhuang.Security.SecurityContext.Current.User.Name
+        (@Zhuang.Security.SecurityContext.Current.User.LoginName)</span>
     </div>
 </div>
 @*<div data-options="region:'south',split:true" style="height:50px;"></div>*@
