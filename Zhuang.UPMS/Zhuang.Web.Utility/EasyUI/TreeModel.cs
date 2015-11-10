@@ -19,5 +19,6 @@ namespace Zhuang.Web.Utility.EasyUI
         public string state { get; set; }
         public bool @checked { get; set; }
         public object attributes { get; set; }
+        public List<TreeModel> children { get; set; }
     }
 }
