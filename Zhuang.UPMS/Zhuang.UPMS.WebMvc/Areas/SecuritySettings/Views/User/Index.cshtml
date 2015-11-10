@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Main_Tab.cshtml";
+}
+
+
+@section scripts{
+
+    <script type="text/javascript">
+        var getListUrl = '@Url.Content("~/SecuritySettings/User/GetList")';
+        var $dg1;
+
+        jQuery(function () {
+
+            $dg1 = $('#dg1');
+
+            $dg1.datagrid({
+                url: getListUrl,
+                columns: [[
+                    { field: 'UserId', title: 'UserId', width: 100, hidden: true },
+                    { field: 'UserName', title: '登录名', width: 200, halign: "center" },
+                    { field: 'Name', title: '姓名', width: 200, halign: "center" },
+                    { field: 'Gender', title: '性别', width: 50, halign: "center", align: "center" },
+                    { field: 'Birthday', title: '生日', width: 100, halign: "center", align: "center" },
+                    { field: 'Address', title: '地址', width: 200, halign: "center", align: "left" },
+                ]],
+                //data: [{ "code": "1", "name": "2", "price": "3" },
+                //    { "code": "1", "name": "2", "price": "3" }],
+                //title: '产品列表',
+                //iconCls: 'icon-edit',
+                border: false,
+                striped: true,
+                height: 300,
+                pagination: true,
+                fit: true,
+                rownumbers: true,
+                singleSelect: true,
+                idField: 'UserId',
+                pageSize: 20,
+                pageList: [10, 20, 30, 50, 100, 1000, 5000, 10000],
+                toolbar: "#dg1Toolbar"
+            });
+
+        });
+
+
+        function f_Add() {
+
+            openDialog(0);
+
+        }
+
+        function f_Edit() {
+            var row = $dg1.datagrid("getSelected");
+            if (row) {
+
+                openDialog(row.UserId);
+
+            } else {
+                $.messager.alert('提示', '请先选择记录！');
+            }
+        }
+
+
+        function f_Delete() {
+
+            var url = '@Url.Content("~/SecuritySettings/User/Delete")';
+            f_AjaxDelete(url, $dg1);
+
+        }
+
+        function openDialog(id) {
+
+            var url = '@Url.Content("~/SecuritySettings/User/Edit")';
+            url += "?id=" + id;
+
+            f_OpenDialog(url, { maximized: false, width: 600, height: 400 });
+
+        }
+    </script>
+
+}
+
+<table id="dg1"></table>
+<div id="dg1Toolbar" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="javascript:void(0);" onclick="f_Add();" class="easyui-linkbutton" iconcls="icon-add" plain="true">新增</a>
+        <a href="javascript:void(0);" onclick="f_Edit();" class="easyui-linkbutton" iconcls="icon-edit" plain="true">修改</a>
+        <a href="javascript:void(0);" onclick="f_Delete();" class="easyui-linkbutton" iconcls="icon-remove" plain="true">删除</a>
+    </div>
+</div>
