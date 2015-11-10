@@ -81,11 +81,10 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             DataGridUrlReturnDataModel model = new DataGridUrlReturnDataModel();
 
             int totalRowCount = 0;
-            var users = _dba.PageQueryEntities<SecUser>("select * from sec_user", "userid", page, rows, out totalRowCount);
-            model.rows = users;
+            model.rows = _dba.PageQueryDataTable("select * from sec_user", "userid", page, rows, out totalRowCount);
             model.total = totalRowCount;
 
-            cr.Content = Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            cr.Content = Newtonsoft.Json.JsonConvert.SerializeObject(model,new Newtonsoft.Json.Converters.DataTableConverter());
 
             return cr;
 
