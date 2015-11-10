@@ -42,7 +42,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(lsTree);
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeModel( lsTree));
             return contentResult;
         }
         #endregion

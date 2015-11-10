@@ -87,9 +87,9 @@
 
             jQuery("#treeMenu").tree({
                 url: '@Url.Content("~/Main/GetMenus")',
-                loadFilter: function (rows) {
-                    return convert(rows);
-                },
+                //loadFilter: function (rows) {
+                //    return convert(rows);
+                //},
                 onDblClick: function (node) {
                     addTab(node.text, node.attributes.url);
                 }
