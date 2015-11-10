@@ -9,6 +9,7 @@ using Zhuang.Web.Utility.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Controllers
 {
+    [Filters.CheckLogin]
     public class MainController : Controller
     {
         DbAccessor _dba = DbAccessor.Get();
