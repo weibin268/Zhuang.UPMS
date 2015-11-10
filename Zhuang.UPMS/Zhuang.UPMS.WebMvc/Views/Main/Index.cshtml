@@ -51,11 +51,9 @@
             for (var i = 0; i < rows.length; i++) {
                 var row = rows[i];
                 if (!exists(rows, row.parentId)) {
-                    nodes.push({
-                        id: row.id,
-                        text: row.text,
-                        attributes: row.attributes
-                    });
+                    var tempRow = {};
+                    jQuery.extend(tempRow, row);
+                    nodes.push(tempRow);
                 }
             }
 
@@ -69,7 +67,8 @@
                 for (var i = 0; i < rows.length; i++) {
                     var row = rows[i];
                     if (row.parentId == node.id) {
-                        var child = { id: row.id, text: row.text, attributes: row.attributes };
+                        var child = {};
+                        jQuery.extend(child, row);
                         if (node.children) {
                             node.children.push(child);
                         } else {
@@ -92,12 +91,11 @@
                     return convert(rows);
                 },
                 onDblClick: function (node) {
-                    debugger;
                     addTab(node.text, node.attributes.url);
                 }
             });
 
-        
+
 
             $tabsCenter.tabs({
                 border: false,

@@ -37,13 +37,14 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
+                    state = item.IsExpand ? TreeStateType.open.ToString() : TreeStateType.closed.ToString(),
                     attributes = new { url = item.Url }
                 });
             }
 
             contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(lsTree);
             return contentResult;
-        } 
+        }
         #endregion
     }
 }
