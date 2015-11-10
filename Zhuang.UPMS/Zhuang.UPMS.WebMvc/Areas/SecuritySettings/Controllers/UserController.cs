@@ -24,7 +24,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         public ActionResult Edit(string id)
         {
             SecUser user = new SecUser();
-            if (id != "0")
+            if (id != null)
             {
                 user = _userService.GetUserById(id);
             }

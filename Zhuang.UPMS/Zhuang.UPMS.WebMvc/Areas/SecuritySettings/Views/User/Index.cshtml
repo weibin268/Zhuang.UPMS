@@ -46,7 +46,7 @@
 
         function f_Add() {
 
-            openDialog(0);
+            openDialog();
 
         }
 
@@ -72,8 +72,9 @@
         function openDialog(id) {
 
             var url = '@Url.Content("~/SecuritySettings/User/Edit")';
-            url += "?id=" + id;
-
+            if (id) {
+                url += "?id=" + id;
+            }
             f_OpenDialog(url, { maximized: false, width: 600, height: 400 });
 
         }
