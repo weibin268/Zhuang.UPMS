@@ -12,12 +12,14 @@ namespace Zhuang.UPMS.WebMvc.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        #region View
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region Action
         public JsonResult Login(SecUser model, string ValidateCode)
         {
             MyJsonResult mjr = new MyJsonResult();
@@ -71,7 +73,6 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             return View("Index");
         }
 
-
         public FileContentResult GetValidateCode()
         {
             ValidateCodeHelper vc = new ValidateCodeHelper();
@@ -79,6 +80,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             Session["ValidateCode"] = strValidateCode;
             return File(vc.CreateValidateGraphic(strValidateCode), "image/jpeg");
 
-        }
+        } 
+        #endregion
     }
 }

@@ -13,12 +13,14 @@ namespace Zhuang.UPMS.WebMvc.Controllers
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        // GET: Main
+        #region View
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region Action
         public ContentResult GetMenus()
         {
             ContentResult contentResult = new ContentResult();
@@ -30,16 +32,18 @@ namespace Zhuang.UPMS.WebMvc.Controllers
 
             foreach (var item in lsSecMenu)
             {
-                lsTree.Add(new TreeModel() {
+                lsTree.Add(new TreeModel()
+                {
                     id = item.MenuId,
                     parentId = item.ParentId,
-                    text=item.Name,
-                    attributes = new { url=item.Url}
+                    text = item.Name,
+                    attributes = new { url = item.Url }
                 });
             }
 
             contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(lsTree);
             return contentResult;
-        }
+        } 
+        #endregion
     }
 }
