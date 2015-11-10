@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Model.Common;
+using Zhuang.Security;
 using Zhuang.Security.Services;
 using Zhuang.Web.Utility.EasyUI.Models;
 
@@ -37,19 +38,23 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
             using (var dba = DbAccessor.Create())
             {
-
                 try
                 {
+                    model.ModifiedById = SecurityContext.Current.User.UserId;
+                    model.ModifiedDate = DateTime.Now;
 
                     if (model.UserId == null)
                     {
                         model.UserId = Guid.NewGuid().ToString();
                         model.RecordStatus = RecordStatus.Active;
+                        model.CreatedById = SecurityContext.Current.User.UserId;
+                        model.CreationDate = DateTime.Now;
                         dba.Insert<SecUser>(model);
                     }
                     else
                     {
-                        dba.UpdateFields(model, "LoginName", "Password", "Name");
+                        dba.UpdateFields(model, "LoginName", "Password", "Name",
+                            "ModifiedById", "ModifiedDate");
                     }
 
                     dba.CommitTran();
