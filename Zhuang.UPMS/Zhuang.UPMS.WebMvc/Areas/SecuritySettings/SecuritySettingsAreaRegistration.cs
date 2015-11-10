@@ -17,7 +17,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings
             context.MapRoute(
                 "SecuritySettings_default",
                 "SecuritySettings/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new string[] { "Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers" }//作用：使用不同域相同名的Controler不会冲突
             );
         }
     }
