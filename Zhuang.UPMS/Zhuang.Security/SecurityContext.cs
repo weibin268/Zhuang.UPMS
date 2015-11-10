@@ -7,6 +7,7 @@ using Zhuang.Model.Common;
 
 namespace Zhuang.Security
 {
+    [Serializable]
     public class SecurityContext
     {
         private const string Key = "SecurityContext";
