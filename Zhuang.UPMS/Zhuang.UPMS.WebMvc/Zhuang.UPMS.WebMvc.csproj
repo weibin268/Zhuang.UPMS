@@ -394,6 +394,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\SecuritySettings\Views\web.config" />
     <Content Include="Areas\SecuritySettings\Views\User\Index.cshtml" />
+    <Content Include="Areas\SecuritySettings\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />

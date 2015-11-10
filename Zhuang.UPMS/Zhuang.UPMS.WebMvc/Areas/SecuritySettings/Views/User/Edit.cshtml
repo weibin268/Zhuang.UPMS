@@ -1,0 +1,62 @@
+﻿
+@model Zhuang.Model.Common.SecUser
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_Main_Tab_Dialog.cshtml";
+}
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        jQuery(function () {
+            f_InitDialogTitle(@Model.UserId);
+        });
+
+        function f_DialogSave() {
+
+            var url = '@Url.Content("~/SecuritySettings/User/Save")';
+
+            f_AjaxDialogSave(url, $dg1);
+
+        }
+    </script>
+}
+
+
+<form>
+    <table align="center">
+        <tr>
+            <td>
+                用户名：
+            </td>
+            <td>
+                <input type="text" name="LoginName" value="@Model.LoginName"
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                密码：
+            </td>
+            <td>
+                <input type="text" name="Password" value="@Model.Password"
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                姓名：
+            </td>
+            <td>
+                <input type="text" name="Name" value="@Model.Name"
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+    </div>
+</form>
