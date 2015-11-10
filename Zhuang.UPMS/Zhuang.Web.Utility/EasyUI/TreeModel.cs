@@ -17,6 +17,7 @@ namespace Zhuang.Web.Utility.EasyUI
         public string parentId { get; set; }
         public string text { get; set; }
         public string state { get; set; }
+        public bool @checked { get; set; }
         public object attributes { get; set; }
     }
 }
