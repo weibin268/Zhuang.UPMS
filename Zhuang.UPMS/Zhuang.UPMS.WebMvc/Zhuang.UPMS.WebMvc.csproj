@@ -399,6 +399,13 @@
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\jquery-zwb\plugins\common.js" />
+    <Content Include="Scripts\jquery-zwb\plugins\DropdownTree.js" />
+    <Content Include="Scripts\jquery-zwb\plugins\zwbGrid.js" />
+    <Content Include="Scripts\jquery-zwb\plugins\zwbTabs.js" />
+    <Content Include="Scripts\jquery-zwb\themes\default\images\thead.jpg" />
+    <Content Include="Scripts\jquery-zwb\themes\default\zwbgrid.css" />
+    <Content Include="Scripts\jquery-zwb\themes\default\zwbtabs.css" />
     <Content Include="Scripts\jquery.easyui-1.4.3.js" />
     <Content Include="Scripts\jquery.easyui-1.4.3.min.js" />
     <Content Include="Scripts\jquery.easyui.mobile-1.4.3.js" />

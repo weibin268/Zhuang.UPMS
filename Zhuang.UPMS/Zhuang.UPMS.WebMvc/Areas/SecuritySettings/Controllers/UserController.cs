@@ -78,12 +78,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         {
             ContentResult cr = new ContentResult();
 
-
-            string strWhere = "";
-            if (filter != null)
-            {
-                strWhere = string.Format("UserName like '%{0}%' or Name like '%{0}%' or Address like '%{0}%'", filter);
-            }
+            //string aa = Request.Form["txtSearch"];
 
             DataGridUrlReturnDataModel model = new DataGridUrlReturnDataModel();
 

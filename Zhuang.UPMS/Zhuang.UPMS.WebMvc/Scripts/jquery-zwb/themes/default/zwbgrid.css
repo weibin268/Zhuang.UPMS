@@ -1,0 +1,65 @@
+﻿
+.zwbgrid-base {
+    background-color: rgb(228, 247, 254);
+    font-family:微软雅黑,宋体,Tahoma;
+    font-size:12px;
+    border:1px solid #b3cde0;
+}
+
+.zwbgrid-base table {
+    border-collapse: collapse;/*去单元格之间的间隔*/
+    table-layout:fixed;/*table 要设置一个宽度*/
+}
+
+.zwbgrid-base tr {
+    height:24px;
+}
+
+.zwbgrid-base td{
+    border:1px solid #b3cde0;
+    cursor:default; 
+    padding-left:6px;
+    padding-right:6px;
+}
+
+.zwbgrid-divhead {
+    background-image:url(images/thead.jpg);
+    text-align:center;
+    font-weight:bold;
+    overflow:hidden;
+    overflow-y:no-content;
+    line-height:120%;
+}
+
+.zwbgrid-divbody {
+}
+
+.zwbgrid-divbody td {
+    /*begin实现内容益出有省略号代替，注意：要配和 table-layout:fixed 属性begin*/
+    word-break: keep-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*end实现内容益出有省略号代替，注意：要配和 table-layout:fixed 属性end*/
+}
+
+.zwbgrid-divbody td div {
+    padding-left:5px;
+
+}
+
+.zwbgrid-tr-even {
+    background-color:white;
+}
+
+.zwbgrid-tr-odd {
+    background-color: rgb(228, 247, 254);
+}
+
+.zwbgrid-tr-over {
+    background-color: rgb(174, 227, 252);
+}
+
+.zwbgrid-tr-selected {
+    background-color:rgb(95,205,255);
+}

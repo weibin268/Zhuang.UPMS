@@ -1,0 +1,45 @@
+﻿
+/*begin*zwbtabs*begin*/
+.zwbtabs {
+    font-family:微软雅黑,宋体,Tahoma;
+    font-size:12px;
+    /*background-color: #FAFAFA;*/
+    margin:0;
+    padding:3px;
+}
+
+.zwbtabs p span {
+    background-color: #c1ecfc;
+    border: 1px solid #b3cde0;
+    cursor: pointer;
+    margin-right: 1px;
+    padding: 2px 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.zwbtabs p span.current {
+    background-color: #FFF;
+    border-bottom-color: #fff;
+}
+
+.zwbtabs p {
+    border-bottom: 1px solid #b3cde0;
+    /*font-weight: bold;*/
+    padding: 0 10px 2px;
+    margin:3px;
+}
+
+.zwbtabs ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.zwbtabs li {
+    margin: 0;
+    padding: 3px; 
+    border: 0
+}
+
+/*end*zwbtabs*end*/
