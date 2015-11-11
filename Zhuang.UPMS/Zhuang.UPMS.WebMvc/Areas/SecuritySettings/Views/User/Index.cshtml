@@ -80,7 +80,7 @@
         }
 
         function f_Search() {
-            $dg1.datagrid("reload", $(document.forms).serializeJsonFilter());
+            $dg1.datagrid("reload", $(document.forms["filter"]).serializeJsonFilter());
         }
     </script>
 
@@ -94,9 +94,9 @@
         <a href="javascript:void(0);" onclick="f_Delete();" class="easyui-linkbutton" iconcls="icon-remove" plain="true">删除</a>
     </div>
     <div>
-        <form>
-            登录名：<input id="txtSearch" name="LoginName" class="textbox" type="text" style="width:150px">
-            姓名：<input id="txtTest" name="Name" class="textbox" type="text" style="width:150px">
+        <form name="filter">
+            登录名：<input name="LoginName" class="textbox" type="text" style="width:150px">
+            姓名：<input name="Name" class="textbox" type="text" style="width:150px">
             <a href="javascript:void(0);" onclick="f_Search();" class="easyui-linkbutton" iconcls="icon-search">查询</a>
         </form>
     </div>
