@@ -7,6 +7,7 @@ using Zhuang.Data;
 using Zhuang.Model.Common;
 using Zhuang.Security;
 using Zhuang.Security.Services;
+using Zhuang.UPMS.WebMvc.App_Code;
 using Zhuang.Web.Utility.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
@@ -101,29 +102,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
         public ContentResult GetList(int page, int rows)
         {
-
-            ContentResult cr = new ContentResult();
-
-            Dictionary<string, object> dicParam = new Dictionary<string, object>();
-
-            foreach (string key in Request.Form.Keys)
-            {
-                if (key.StartsWith("Filter_"))
-                {
-                    dicParam.Add(key.Replace("Filter_",""),Request.Form[key]);
-                }
-            }
-
-            DataGridUrlReturnDataModel model = new DataGridUrlReturnDataModel();
-
-            int totalRowCount = 0;
-            model.rows = _dba.PageQueryDataTable("SecuritySettings.User.List", "userid", page, rows, out totalRowCount, dicParam);
-            model.total = totalRowCount;
-
-            cr.Content = Newtonsoft.Json.JsonConvert.SerializeObject(model,new Newtonsoft.Json.Converters.DataTableConverter());
-
-            return cr;
-
+            return EasyUIHelper.GetDataGridPageData("SecuritySettings.User.List", "userid", page, rows);
         }
     }
 }

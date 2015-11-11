@@ -439,7 +439,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\EasyUIHelper.cs" />
+    <Compile Include="App_Code\EasyUIHelper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\EasyUIController.cs" />
