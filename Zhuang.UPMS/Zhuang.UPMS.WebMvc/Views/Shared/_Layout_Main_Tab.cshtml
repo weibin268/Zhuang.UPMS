@@ -81,7 +81,7 @@
         {
             $.ajax(url, {
                 type: "POST",
-                data: $(document.forms).serialize(),
+                data: $(document.forms["edit"]).serialize(),
                 beforeSend: function () {
                     if (!$(document.forms).form("validate"))
                         return false;
