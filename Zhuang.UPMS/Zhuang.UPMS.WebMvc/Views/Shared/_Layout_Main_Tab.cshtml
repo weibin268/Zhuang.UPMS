@@ -97,8 +97,10 @@
                         alert(data.Message);
                     }
                 },
-                error: function () {
-                    alert("ajax error!")
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("XMLHttpRequest.status:" + XMLHttpRequest.status
+                        + "\nXMLHttpRequest.readyState:" + XMLHttpRequest.readyState
+                        + "\ntextStatus:" + textStatus);
                 }
             });
         }
