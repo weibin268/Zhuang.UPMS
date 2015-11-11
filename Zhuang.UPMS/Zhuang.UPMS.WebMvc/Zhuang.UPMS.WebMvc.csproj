@@ -69,7 +69,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Zhuang.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zhuang.Data.1.1.4\lib\Zhuang.Data.dll</HintPath>
+      <HintPath>..\packages\Zhuang.Data.1.1.5\lib\Zhuang.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Zhuang.Model.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -395,6 +395,7 @@
     <Content Include="Areas\SecuritySettings\Views\web.config" />
     <Content Include="Areas\SecuritySettings\Views\User\Index.cshtml" />
     <Content Include="Areas\SecuritySettings\Views\User\Edit.cshtml" />
+    <Content Include="App_Config\SqlCommands\SecuritySettings\User.sqlserver.config" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />

@@ -80,7 +80,7 @@
         }
 
         function f_Search() {
-            $dg1.datagrid("reload", $(document.forms).serializeJson());
+            $dg1.datagrid("reload", $(document.forms).serializeJsonFilter());
         }
     </script>
 
@@ -95,8 +95,8 @@
     </div>
     <div>
         <form>
-            <input id="txtSearch" name="txtSearch" class="textbox" type="text" style="width:200px">
-            <input id="txtTest" name="txtTest" class="textbox" type="text" style="width:200px">
+            <input id="txtSearch" name="LoginName" class="textbox" type="text" style="width:200px">
+            <input id="txtTest" name="Name" class="textbox" type="text" style="width:200px">
             <a href="javascript:void(0);" onclick="f_Search();" class="easyui-linkbutton" iconcls="icon-search">查询</a>
         </form>
     </div>

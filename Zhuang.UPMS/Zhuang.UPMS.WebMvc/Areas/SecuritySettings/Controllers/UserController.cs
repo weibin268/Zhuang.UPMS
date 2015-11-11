@@ -78,12 +78,20 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         {
             ContentResult cr = new ContentResult();
 
-            //string aa = Request.Form["txtSearch"];
+            Dictionary<string, object> dicParam = new Dictionary<string, object>();
+
+            foreach (string key in Request.Form.Keys)
+            {
+                if (key.StartsWith("Filter_"))
+                {
+                    dicParam.Add(key.Replace("Filter_",""),Request.Form[key]);
+                }
+            }
 
             DataGridUrlReturnDataModel model = new DataGridUrlReturnDataModel();
 
             int totalRowCount = 0;
-            model.rows = _dba.PageQueryDataTable("select * from sec_user", "userid", page, rows, out totalRowCount);
+            model.rows = _dba.PageQueryDataTable("SecuritySettings.User.List", "userid", page, rows, out totalRowCount, dicParam);
             model.total = totalRowCount;
 
             cr.Content = Newtonsoft.Json.JsonConvert.SerializeObject(model,new Newtonsoft.Json.Converters.DataTableConverter());
