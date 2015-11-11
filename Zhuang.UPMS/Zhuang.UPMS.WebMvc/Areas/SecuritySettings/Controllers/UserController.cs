@@ -12,6 +12,7 @@ using Zhuang.Web.Utility.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 {
+    [Filters.CheckLogin]
     public class UserController : Controller
     {
         UserService _userService = new UserService();
