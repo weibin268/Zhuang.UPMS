@@ -20,7 +20,10 @@ namespace Zhuang.UPMS.WebMvc.Filters
                 //    string.Format("<script>top.window.location.href='{0}';</script>",
                 //    urlLogin));
 
-                filterContext.Result = new RedirectResult(urlLogin);
+                //filterContext.Result = new RedirectResult(urlLogin);
+                string strScript = string.Format("<script>top.window.location.href='{0}';</script>", urlLogin);
+                filterContext.Result = new JavaScriptResult() { Script = strScript };
+
             }
         }
 
