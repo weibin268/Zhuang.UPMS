@@ -40,6 +40,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             {
                 try
                 {
+                    dba.BeginTran();
+
                     model.ModifiedById = SecurityContext.Current.User.UserId;
                     model.ModifiedDate = DateTime.Now;
 
