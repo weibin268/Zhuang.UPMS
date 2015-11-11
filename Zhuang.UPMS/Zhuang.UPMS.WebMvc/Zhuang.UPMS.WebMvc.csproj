@@ -396,6 +396,7 @@
     <Content Include="Areas\SecuritySettings\Views\User\Index.cshtml" />
     <Content Include="Areas\SecuritySettings\Views\User\Edit.cshtml" />
     <Content Include="App_Config\SqlCommands\SecuritySettings\User.sqlserver.config" />
+    <Content Include="Areas\Common\Views\web.config" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
@@ -438,7 +439,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\EasyUIHelper.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
+    <Compile Include="Areas\Common\Controllers\EasyUIController.cs" />
     <Compile Include="Areas\Portal\PortalAreaRegistration.cs" />
     <Compile Include="Areas\SecuritySettings\Controllers\UserController.cs" />
     <Compile Include="Areas\SecuritySettings\SecuritySettingsAreaRegistration.cs" />
@@ -473,6 +477,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Common\Models\" />
+    <Folder Include="Areas\Common\Views\EasyUI\" />
+    <Folder Include="Areas\Common\Views\Shared\" />
     <Folder Include="Areas\Portal\Controllers\" />
     <Folder Include="Areas\Portal\Models\" />
     <Folder Include="Areas\Portal\Views\Shared\" />

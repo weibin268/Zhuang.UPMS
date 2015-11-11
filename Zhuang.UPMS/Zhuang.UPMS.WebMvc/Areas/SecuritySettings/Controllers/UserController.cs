@@ -99,8 +99,9 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return Json(mjr);
         }
 
-        public ContentResult GetList(int rows, int page, string filter)
+        public ContentResult GetList(int page, int rows)
         {
+
             ContentResult cr = new ContentResult();
 
             Dictionary<string, object> dicParam = new Dictionary<string, object>();
