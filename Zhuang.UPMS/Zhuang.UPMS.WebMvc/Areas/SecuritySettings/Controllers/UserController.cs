@@ -74,6 +74,31 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return Json(mjr);
         }
 
+        public JsonResult Delete(string id)
+        {
+            MyJsonResult mjr = new MyJsonResult();
+
+
+            try
+            {
+                var user = new SecUser();
+                user.UserId = id;
+                user.RecordStatus = RecordStatus.Deleted;
+                _dba.UpdateFields(user, "RecordStatus");
+
+
+                mjr.Success = true;
+            }
+            catch (Exception ex)
+            {
+
+                mjr.Success = false;
+                mjr.Message = ex.Message;
+            }
+      
+            return Json(mjr);
+        }
+
         public ContentResult GetList(int rows, int page, string filter)
         {
             ContentResult cr = new ContentResult();
