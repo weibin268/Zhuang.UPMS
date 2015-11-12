@@ -15,14 +15,17 @@ namespace Zhuang.UPMS.WebMvc.Filters
             if (SecurityContext.Current == null)
             {
                 string urlLogin = UrlHelper.GenerateContentUrl("~/Login/Index", filterContext.HttpContext);
+                string strScript = string.Format("<script 'text/javascript'>top.window.location.href='{0}';</script>", urlLogin);
 
                 //filterContext.HttpContext.Response.Write(
                 //    string.Format("<script>top.window.location.href='{0}';</script>",
                 //    urlLogin));
 
                 //filterContext.Result = new RedirectResult(urlLogin);
-                string strScript = string.Format("<script>top.window.location.href='{0}';</script>", urlLogin);
-                filterContext.Result = new JavaScriptResult() { Script = strScript };
+
+                //filterContext.Result = new JavaScriptResult() { Script = strScript };
+
+                filterContext.Result = new ContentResult() { Content = strScript };
 
             }
         }
