@@ -57,7 +57,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     }
                     else
                     {
-                        dba.UpdateFields(model, "LoginName", "Password", "Name",
+                        dba.UpdateFields(model, "LoginName", "Password", "Name", "Sex", "Birthday",
+                            "MobilePhone",
                             "ModifiedById", "ModifiedDate");
                     }
 

@@ -83,7 +83,7 @@
                 type: "POST",
                 data: $(document.forms["edit"]).serialize(),
                 beforeSend: function () {
-                    if (!$(document.forms).form("validate"))
+                    if (!$(document.forms["edit"]).form("validate"))
                         return false;
 
                     f_LoadingShow("正在保存……");

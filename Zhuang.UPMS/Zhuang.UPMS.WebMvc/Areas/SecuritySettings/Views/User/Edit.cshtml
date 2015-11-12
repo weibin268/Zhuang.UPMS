@@ -12,6 +12,9 @@
 
         jQuery(function () {
             f_InitDialogTitle("@Model.UserId");
+
+            jQuery("#selSex").val('@Model.Sex');
+
         });
 
         function f_DialogSave() {
@@ -35,8 +38,6 @@
                 <input type="text" name="LoginName" value="@Model.LoginName"
                        class="easyui-validatebox textbox" data-options="required:true" />
             </td>
-        </tr>
-        <tr>
             <td>
                 密码：
             </td>
@@ -45,7 +46,6 @@
                        class="easyui-validatebox textbox" data-options="required:true" />
             </td>
         </tr>
-
         <tr>
             <td>
                 姓名：
@@ -53,6 +53,29 @@
             <td>
                 <input type="text" name="Name" value="@Model.Name"
                        class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+            <td>
+                性别：
+            </td>
+            <td>
+                <select class="easyui-combobox" id="selSex" name="Sex" data-options="required:true">
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>生日:</td>
+            <td>
+                <input name="Birthday" class="easyui-datebox" value="@Model.Birthday" 
+                       data-options="required:true,editable:false" >
+            </td>
+            <td>手机号:</td>
+            <td>
+                <input type="text" name="MobilePhone" value="@Model.MobilePhone"
+                       class="easyui-validatebox textbox" />
+                
             </td>
         </tr>
     </table>
