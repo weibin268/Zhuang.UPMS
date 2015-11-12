@@ -98,6 +98,12 @@
         <form name="filter">
             登录名：<input name="LoginName" class="textbox" type="text" style="width:150px">
             姓名：<input name="Name" class="textbox" type="text" style="width:150px">
+            性别：
+            <select class="easyui-combobox" id="selSex" name="Sex" data-options="required:true">
+                <option value="">全部</option>
+                <option value="M">男</option>
+                <option value="F">女</option>
+            </select>
             <a href="javascript:void(0);" onclick="f_Search();" class="easyui-linkbutton" iconcls="icon-search">查询</a>
         </form>
     </div>
