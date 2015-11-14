@@ -30,6 +30,17 @@
 
 <form name="edit">
     <table align="center">
+
+        <tr>
+            <td>
+                父级菜单：
+            </td>
+            <td>
+                <input type="text" id="ParentName" name="ParentName" value="@ViewBag.ParentName"
+                    class="easyui-validatebox textbox" data-options="required:true" readonly="readonly"/>
+            </td>
+        </tr>
+
         <tr>
             <td>
                 菜单名：

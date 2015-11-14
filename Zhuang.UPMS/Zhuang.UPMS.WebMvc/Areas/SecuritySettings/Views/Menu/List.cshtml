@@ -9,6 +9,10 @@
     <script type="text/javascript">
 
         jQuery(function () {
+            if (!jQuery("#hiParentId").val())
+            {
+                jQuery("#aAdd").hide();
+            }
 
             $dg1 = $('#dg1');
             getListUrl = '@Url.Content("~/SecuritySettings/Menu/GetList")';
@@ -65,8 +69,16 @@
 
         function f_Delete() {
 
-            var url = '@Url.Content("~/SecuritySettings/Menu/Delete")';
-            f_AjaxDelete(url, $dg1);
+            var row = $dg1.datagrid("getSelected");
+            if (row) {
+
+                var url = '@Url.Content("~/SecuritySettings/Menu/Delete")';
+                f_AjaxDelete(url, $dg1);
+
+            } else {
+                $.messager.alert('提示', '请先选择记录！');
+            }
+
 
         }
 
@@ -89,9 +101,9 @@
 <table id="dg1"></table>
 <div id="dg1Toolbar" style="padding:5px;height:auto">
     <div style="margin-bottom:5px">
-        <a href="javascript:void(0);" onclick="f_Add();" class="easyui-linkbutton" iconcls="icon-add" plain="true">新增</a>
-        <a href="javascript:void(0);" onclick="f_Edit();" class="easyui-linkbutton" iconcls="icon-edit" plain="true">修改</a>
-        <a href="javascript:void(0);" onclick="f_Delete();" class="easyui-linkbutton" iconcls="icon-remove" plain="true">删除</a>
+        <a id="aAdd" href="javascript:void(0);" onclick="f_Add();" class="easyui-linkbutton" iconcls="icon-add" plain="true">新增</a>
+        <a id="aEdit" href="javascript:void(0);" onclick="f_Edit();" class="easyui-linkbutton" iconcls="icon-edit" plain="true">修改</a>
+        <a id="aDelete" href="javascript:void(0);" onclick="f_Delete();" class="easyui-linkbutton" iconcls="icon-remove" plain="true">删除</a>
     </div>
     <div>
         <form name="filter">

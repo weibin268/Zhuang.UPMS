@@ -65,8 +65,17 @@
 
         function f_Delete() {
 
-            var url = '@Url.Content("~/SecuritySettings/User/Delete")';
-            f_AjaxDelete(url, $dg1);
+            var row = $dg1.datagrid("getSelected");
+            if (row) {
+
+                var url = '@Url.Content("~/SecuritySettings/User/Delete")';
+                f_AjaxDelete(url, $dg1);
+
+            } else {
+                $.messager.alert('提示', '请先选择记录！');
+            }
+
+       
 
         }
 
