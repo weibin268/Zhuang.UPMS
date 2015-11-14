@@ -1,0 +1,57 @@
+﻿
+@model Zhuang.Model.Common.SecMenu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_Main_Tab_Dialog.cshtml";
+}
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        jQuery(function () {
+
+            f_InitDialogTitle("@Model.MenuId");
+
+        });
+
+        function f_DialogSave() {
+
+            var url = '@Url.Content("~/SecuritySettings/Menu/Save")';
+
+            f_AjaxDialogSave(url, $dg1);
+
+        }
+    </script>
+}
+
+
+<form name="edit">
+    <table align="center">
+        <tr>
+            <td>
+                菜单名：
+            </td>
+            <td>
+                <input type="text" id="Name" name="Name" value="@Model.Name"
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+    
+        </tr>
+        <tr>
+            <td>
+                Url：
+            </td>
+            <td>
+                <input type="text" name="Url" value="@Model.Url" style="width:300px"
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input type="hidden" name="MenuId" value="@Model.MenuId" />
+        <input type="hidden" name="ParentId" value="@Model.ParentId" />
+    </div>
+</form>

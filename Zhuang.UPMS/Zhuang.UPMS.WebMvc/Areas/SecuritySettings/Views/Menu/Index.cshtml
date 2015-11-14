@@ -11,7 +11,6 @@
         jQuery("#treeMenu").tree({
             url: '@Url.Content("~/SecuritySettings/Menu/GetMenus")',
             onClick: function (node) {
-                debugger;
                 jQuery("#iframe1").attr("src", '@Url.Content("~/SecuritySettings/Menu/List")?ParentId=' + node.id)
             }
         });

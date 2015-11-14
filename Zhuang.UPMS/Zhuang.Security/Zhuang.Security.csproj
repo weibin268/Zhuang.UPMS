@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityContext.cs" />
+    <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +59,7 @@
     <Folder Include="Principal\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="App_Config\SqlCommands\Security\Menu.sqlserver.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Model.Common;
+using Zhuang.Security;
+using Zhuang.Security.Services;
 using Zhuang.UPMS.WebMvc.App_Code;
 using Zhuang.Web.Utility.EasyUI.Models;
 
@@ -13,6 +15,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
     public class MenuController : Controller
     {
         DbAccessor _dba = DbAccessor.Get();
+        MenuService _menuService = new MenuService();
 
         // GET: SecuritySettings/Menu
         public ActionResult Index()
@@ -25,6 +28,80 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             ViewBag.ParentId = Request.QueryString["ParentId"];
 
             return View();
+        }
+
+        public ActionResult Edit(string id, string ParentId)
+        {
+            SecMenu model = new SecMenu();
+            model.ParentId = ParentId;
+            if (id != null)
+            {
+                model = _menuService.GetMenuById(id);
+            }
+            return View(model);
+        }
+
+        public JsonResult Save(SecMenu model)
+        {
+            MyJsonResult mjr = new MyJsonResult();
+
+            using (var dba = DbAccessor.Create())
+            {
+                try
+                {
+                    dba.BeginTran();
+
+                    model.ModifiedById = SecurityContext.Current.User.UserId;
+                    model.ModifiedDate = DateTime.Now;
+
+                    if (model.MenuId == null)
+                    {
+                        model.MenuId = Guid.NewGuid().ToString();
+                        model.RecordStatus = RecordStatus.Active;
+                        model.CreatedById = SecurityContext.Current.User.UserId;
+                        model.CreationDate = DateTime.Now;
+                        dba.ExecuteNonQuery("Security.Menu.Insert", model);
+                    }
+                    else
+                    {
+                        dba.UpdateFields(model, "Name", "Url",
+                            "MobilePhone",
+                            "ModifiedById", "ModifiedDate");
+                    }
+
+                    dba.CommitTran();
+                    mjr.Success = true;
+                    mjr.Message = "保存成功！";
+                }
+                catch (Exception ex)
+                {
+                    dba.RollbackTran();
+                    mjr.Success = false;
+                    mjr.Message = ex.Message;
+                }
+            }
+
+            return Json(mjr);
+        }
+
+        public JsonResult Delete(string id)
+        {
+            MyJsonResult mjr = new MyJsonResult();
+
+            try
+            {
+                _dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = id });
+
+                mjr.Success = true;
+            }
+            catch (Exception ex)
+            {
+
+                mjr.Success = false;
+                mjr.Message = ex.Message;
+            }
+
+            return Json(mjr);
         }
 
         public ContentResult GetMenus()

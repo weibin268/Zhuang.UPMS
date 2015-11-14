@@ -45,6 +45,43 @@
             $dg1.datagrid("reload", $(document.forms["filter"]).serializeJsonFilter());
         }
 
+        function openDialog(id) {
+
+            var url = '@Url.Content("~/SecuritySettings/Menu/Edit")';
+            url = url + "?ParentId=" + jQuery("#hiParentId").val();
+            if (id) {
+                url += "&id=" + id;
+            }
+            f_OpenDialog(url, { maximized: false, width: 600, height: 400 });
+
+        }
+
+
+        function f_Add() {
+
+            openDialog();
+
+        }
+
+        function f_Delete() {
+
+            var url = '@Url.Content("~/SecuritySettings/Menu/Delete")';
+            f_AjaxDelete(url, $dg1);
+
+        }
+
+        function f_Edit()
+        {
+            var row = $dg1.datagrid("getSelected");
+            if (row) {
+
+                openDialog(row.MenuId);
+
+            } else {
+                $.messager.alert('提示', '请先选择记录！');
+            }
+        }
+
     </script>
 
 }
@@ -59,7 +96,7 @@
     <div>
         <form name="filter">
             <div>
-                <input type="hidden" name="ParentId" value='@ViewBag.ParentId' />
+                <input type="hidden" id="hiParentId" name="ParentId" value='@ViewBag.ParentId' />
             </div>
             <div>
                 菜单名：<input name="Name" class="textbox" type="text" style="width:150px">
