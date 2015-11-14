@@ -399,6 +399,8 @@
     <Content Include="Areas\Common\Views\web.config" />
     <Content Include="Areas\SecuritySettings\Views\Organization\Index.cshtml" />
     <Content Include="Areas\SecuritySettings\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\SecuritySettings\Views\Menu\List.cshtml" />
+    <Content Include="App_Config\SqlCommands\SecuritySettings\Menu.sqlserver.config" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />

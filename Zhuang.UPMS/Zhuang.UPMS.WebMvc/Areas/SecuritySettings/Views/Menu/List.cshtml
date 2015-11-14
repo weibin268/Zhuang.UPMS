@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout_Main_Tab.cshtml";
+}
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        jQuery(function () {
+
+            $dg1 = $('#dg1');
+            getListUrl = '@Url.Content("~/SecuritySettings/Menu/GetList")';
+
+            $dg1.datagrid({
+                url: getListUrl,
+                columns: [[
+                    { field: 'MenuId', title: 'MenuId', width: 100, hidden: true },
+                    { field: 'Name', title: '菜单名', width: 200, halign: "center" },
+                    { field: 'Url', title: 'Url', width: 200, halign: "center" },
+                    { field: 'Order', title: '排序', width: 50, halign: "center", align: "center" }
+                ]],
+                //data: [{ "code": "1", "name": "2", "price": "3" },
+                //    { "code": "1", "name": "2", "price": "3" }],
+                //title: '产品列表',
+                //iconCls: 'icon-edit',
+                border: false,
+                striped: true,
+                height: 300,
+                pagination: true,
+                fit: true,
+                rownumbers: true,
+                singleSelect: true,
+                idField: 'MenuId',
+                pageSize: 20,
+                pageList: [10, 20, 30, 50, 100, 1000, 5000, 10000],
+                toolbar: "#dg1Toolbar",
+                queryParams: $(document.forms["filter"]).serializeJsonFilter()
+            });
+
+        });
+
+        function f_Search() {
+            $dg1.datagrid("reload", $(document.forms["filter"]).serializeJsonFilter());
+        }
+
+    </script>
+
+}
+
+<table id="dg1"></table>
+<div id="dg1Toolbar" style="padding:5px;height:auto">
+    <div style="margin-bottom:5px">
+        <a href="javascript:void(0);" onclick="f_Add();" class="easyui-linkbutton" iconcls="icon-add" plain="true">新增</a>
+        <a href="javascript:void(0);" onclick="f_Edit();" class="easyui-linkbutton" iconcls="icon-edit" plain="true">修改</a>
+        <a href="javascript:void(0);" onclick="f_Delete();" class="easyui-linkbutton" iconcls="icon-remove" plain="true">删除</a>
+    </div>
+    <div>
+        <form name="filter">
+            <div>
+                <input type="hidden" name="ParentId" value='@ViewBag.ParentId' />
+            </div>
+            <div>
+                菜单名：<input name="Name" class="textbox" type="text" style="width:150px">
+                <a href="javascript:void(0);" onclick="f_Search();" class="easyui-linkbutton" iconcls="icon-search">查询</a>
+            </div>
+        </form>
+    </div>
+</div>
