@@ -15,6 +15,12 @@
 
             jQuery("#selSex").val('@Model.Sex');
 
+
+            if ("@Model.UserId")
+            {
+                jQuery("#LoginName").attr("readonly", "readonly");
+                //jQuery("#LoginName").attr("disabled", "disabled");
+            }
         });
 
         function f_DialogSave() {
@@ -35,7 +41,7 @@
                 用户名：
             </td>
             <td>
-                <input type="text" name="LoginName" value="@Model.LoginName"
+                <input type="text" id="LoginName" name="LoginName" value="@Model.LoginName"
                        class="easyui-validatebox textbox" data-options="required:true" />
             </td>
             <td>

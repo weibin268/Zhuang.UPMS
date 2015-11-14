@@ -49,6 +49,19 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
                     if (model.UserId == null)
                     {
+
+                        #region 校验数据
+                        int count = _dba.ExecuteScalar<int>("SecuritySettings.User.CountByLoginName",
+                                           new { LoginName = model.LoginName, RecordStatus = RecordStatus.Active });
+
+                        if (count > 0)
+                        {
+                            mjr.Success = false;
+                            mjr.Message = "登录名已存在！";
+                            goto End;
+                        } 
+                        #endregion
+
                         model.UserId = Guid.NewGuid().ToString();
                         model.RecordStatus = RecordStatus.Active;
                         model.CreatedById = SecurityContext.Current.User.UserId;
@@ -73,6 +86,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     mjr.Message = ex.Message;
                 }
             }
+
+            End:
 
             return Json(mjr);
         }
