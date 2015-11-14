@@ -77,7 +77,7 @@
             $("#loading").hide();
         }
 
-        function f_AjaxDialogSave(url, $dg)
+        function f_AjaxDialogSave(url, $dg, successCallback)
         {
             $.ajax(url, {
                 type: "POST",
@@ -93,6 +93,8 @@
                 },
                 success: function (data, textStatus, jqXHR) {
                     if (data.Success) {
+                        if (successCallback) successCallback();
+
                         f_CloseDialog();
                         if ($dg) {
                             $dg.datagrid("reload");
@@ -109,7 +111,7 @@
             });
         }
 
-        function f_AjaxDelete(url, $dg) {
+        function f_AjaxDelete(url, $dg, successCallback) {
 
             var row = $dg.datagrid("getSelected");
             var idValue = row[$dg.datagrid("options").idField];
@@ -133,6 +135,8 @@
                         },
                         success: function (data, textStatus, jqXHR) {
                             if (data.Success) {
+                                if (successCallback) successCallback();
+
                                 $dg.datagrid("reload");
                             } else {
                                 alert(data.Message);

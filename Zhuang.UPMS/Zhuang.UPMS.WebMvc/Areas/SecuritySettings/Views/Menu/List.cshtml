@@ -73,7 +73,9 @@
             if (row) {
 
                 var url = '@Url.Content("~/SecuritySettings/Menu/Delete")';
-                f_AjaxDelete(url, $dg1);
+                f_AjaxDelete(url, $dg1, function () {
+                    parent.f_ReloadMenuTree();
+                });
 
             } else {
                 $.messager.alert('提示', '请先选择记录！');

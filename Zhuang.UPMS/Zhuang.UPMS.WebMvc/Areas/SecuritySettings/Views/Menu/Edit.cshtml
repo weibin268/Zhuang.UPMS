@@ -21,7 +21,9 @@
 
             var url = '@Url.Content("~/SecuritySettings/Menu/Save")';
 
-            f_AjaxDialogSave(url, $dg1);
+            f_AjaxDialogSave(url, $dg1, function () {
+                parent.f_ReloadMenuTree();
+            });
 
         }
     </script>

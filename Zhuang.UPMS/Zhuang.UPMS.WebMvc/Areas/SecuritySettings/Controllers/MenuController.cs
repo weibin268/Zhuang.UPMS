@@ -59,6 +59,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
                     if (model.MenuId == null)
                     {
+                        model.IsExpand = true;
+
                         model.MenuId = Guid.NewGuid().ToString();
                         model.RecordStatus = RecordStatus.Active;
                         model.CreatedById = SecurityContext.Current.User.UserId;
