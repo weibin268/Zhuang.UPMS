@@ -94,8 +94,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
             try
             {
-                MenuService menuService = new MenuService();
-                menuService.DeleteRecursive(id);
+                _menuService.DeleteRecursive(id);
 
                 mjr.Success = true;
             }

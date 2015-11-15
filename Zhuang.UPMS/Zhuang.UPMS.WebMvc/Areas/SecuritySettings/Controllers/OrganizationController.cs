@@ -88,7 +88,25 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return Json(mjr);
         }
 
+        public JsonResult Delete(string id)
+        {
+            MyJsonResult mjr = new MyJsonResult();
 
+            try
+            {
+                _organizationService.DeleteRecursive(id);
+
+                mjr.Success = true;
+            }
+            catch (Exception ex)
+            {
+
+                mjr.Success = false;
+                mjr.Message = ex.Message;
+            }
+
+            return Json(mjr);
+        }
 
         public ContentResult GetTree()
         {
