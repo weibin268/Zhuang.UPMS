@@ -96,7 +96,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
             try
             {
-                _dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = id });
+                MenuService menuService = new MenuService();
+                menuService.DeleteRecursive(id);
 
                 mjr.Success = true;
             }
