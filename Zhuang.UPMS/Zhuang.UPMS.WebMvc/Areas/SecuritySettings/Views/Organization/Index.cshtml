@@ -4,5 +4,34 @@
     Layout = "~/Views/Shared/_Layout_Main_Tab.cshtml";
 }
 
-<h2>Index</h2>
 
+@section scripts{
+
+    <script type="text/javascript">
+
+        jQuery("#treeLeft").tree({
+            url: '@Url.Content("~/SecuritySettings/Organization/GetTree")',
+            onClick: function (node) {
+                jQuery("#iframe1").attr("src", '@Url.Content("~/SecuritySettings/Organization/List")?ParentId=' + node.id)
+            }
+        });
+
+
+        function f_ReloadMenuTree()
+        {
+            jQuery("#treeLeft").tree("reload");
+        }
+
+    </script>
+}
+
+
+<div class="easyui-layout" fit="true">
+    <div data-options="region:'west',split:true" title="组织树" style="width:200px;">
+        <ul id="treeLeft"></ul>
+    </div>
+    <div data-options="region:'center'" style="overflow-y:hidden;">
+        <iframe id="iframe1" frameborder="0"
+                style="height:100%;width:100%" src='@Url.Content("~/SecuritySettings/Organization/List")'></iframe>
+    </div>
+</div>
