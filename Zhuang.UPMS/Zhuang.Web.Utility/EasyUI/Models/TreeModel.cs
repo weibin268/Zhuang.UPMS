@@ -42,6 +42,12 @@ namespace Zhuang.Web.Utility.EasyUI.Models
         {
             var children = lsRawModel.FindAll(cc => { return cc.parentId == parentId;});
 
+            //如是叶子节点
+            if (children.Count == 0)
+            {
+                lsRawModel.Find(c => c.id == parentId).state = TreeStateType.open.ToString();
+            }
+
             children.ForEach(c =>
             {
                 c.children = RecursiveChildren(lsRawModel, c.id);
