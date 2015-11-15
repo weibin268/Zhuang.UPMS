@@ -115,8 +115,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         {
             ContentResult contentResult = new ContentResult();
 
-            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM dbo.Sec_Menu
-            WHERE RecordStatus='Active'");
+            var lsSecMenu = _dba.QueryEntities<SecMenu>("SecuritySettings.Menu.GetTree");
 
             List<TreeModel> lsTree = new List<TreeModel>();
 
