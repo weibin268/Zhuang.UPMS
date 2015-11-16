@@ -15,15 +15,16 @@
 
             f_InitDialogTitle("@Model.MenuId");
 
-            var isExpand = "@{ var tempIsExpand = Model.IsExpand ? 1 : 0; @tempIsExpand}";
-            if (isExpand == 1) {
+            var isExpand = "@Model.IsExpand";
+            if (isExpand == "True") {
                 jQuery("#cbIsExpand").prop("checked", true);
             }
         });
 
         function f_DialogSave() {
+
             var url = '@Url.Content("~/SecuritySettings/Menu/Save")';
-            jQuery("#cbIsExpand").val
+
             f_AjaxDialogSave(url, $dg1, function () {
                 parent.f_ReloadMenuTree();
             });
