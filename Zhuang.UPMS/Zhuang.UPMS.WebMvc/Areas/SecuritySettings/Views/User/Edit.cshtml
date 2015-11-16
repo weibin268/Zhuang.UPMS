@@ -93,8 +93,11 @@
         </tr>
         <tr>
             <td>所属组织:</td>
-            <td><input type="button" value="Btn" onclick="f_SelectOrg()"/></td>
-            <td></td>
+            <td>
+                <input type="text" name="OrgName" 
+                       class="easyui-validatebox textbox" data-options="required:true" />
+            </td>
+            <td><input type="button" value="选择组织" onclick="f_SelectOrg()" /></td>
             <td></td>
         </tr>
     </table>
