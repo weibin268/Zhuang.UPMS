@@ -4,5 +4,28 @@
     Layout = "~/Views/Shared/_Layout_Main_Tab_Dialog.cshtml";
 }
 
-<h2>Orgnization Select</h2>
 
+@section scripts{
+
+    <script type="text/javascript">
+
+        jQuery("#treeLeft").tree({
+            url: '@Url.Content("~/SecuritySettings/Organization/GetTree")',
+            onClick: function (node) {
+
+            }
+        });
+
+    </script>
+}
+
+
+<div class="easyui-layout" fit="true">
+
+    <div data-options="region:'west',split:true" title="组织树" style="width:200px;">
+        <ul id="treeLeft"></ul>
+    </div>
+    <div data-options="region:'center'" style="overflow-y:hidden;">
+        AAA
+    </div>
+</div>
