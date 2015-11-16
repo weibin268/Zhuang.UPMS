@@ -20,20 +20,19 @@
     <script src="~/Scripts/jquery-zwb/plugins/common.js"></script>
 
     <script type="text/javascript">
-        var $dlg1;
-
+        
         jQuery(function () {
-            $dlg1 = $('#dlg1');
-
+           
 
         });
 
-        function f_OpenDialog(url,option) {
-            var content = '<div style="height:100%;overflow-y:hidden;">'
-                + '<iframe name="iframe1" scrolling="auto" frameborder="0"  src="' + url
-                + '" style="width:100%;height:100%;"></iframe></div>';
+        function f_OpenDialog(url, option, id) {
+            if (!id) id = 1;
+            //var content = '<div style="height:100%;overflow-y:hidden;">'
+            //    + '<iframe name="iframe1" scrolling="auto" frameborder="0"  src="' + url
+            //    + '" style="width:100%;height:100%;"></iframe></div>';
 
-            $dlg1.dialog($.extend({
+            jQuery("#dlg"+id).dialog($.extend({
                 title: ' ',
                 width: 700,
                 height: 400,
@@ -50,12 +49,14 @@
             }, option));
         }
 
-        function f_CloseDialog() {
-            $dlg1.dialog('close');
+        function f_CloseDialog(id) {
+            if (!id) id = 1;
+            jQuery("#dlg" + id).dialog('close');
         }
 
-        function f_SetDialogTitle(title) {
-            $dlg1.dialog("setTitle", title);
+        function f_SetDialogTitle(title, id) {
+            if (!id) id = 1;
+            jQuery("#dlg" + id).dialog("setTitle", title);
         }
 
         function f_InitDialogTitle(id) {
@@ -178,6 +179,15 @@
                     </td>
                 </tr>
             </table>
+        </div>
+
+        <div id="dlg2">
+        </div>
+
+        <div id="dlg3">
+        </div>
+
+        <div id="dlg4">
         </div>
     </div>
     @**********************Dialog*@

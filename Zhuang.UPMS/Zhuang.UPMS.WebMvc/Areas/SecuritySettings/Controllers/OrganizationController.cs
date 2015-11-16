@@ -30,7 +30,6 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return View();
         }
 
-
         public ActionResult Edit(string id, string ParentId)
         {
             ViewBag.ParentName = _dba.ExecuteScalar<string>("SELECT Name FROM dbo.Sec_Organization WHERE OrganizationId=#OrganizationId#",
@@ -43,6 +42,11 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                 model = _organizationService.GetOrganizationById(id);
             }
             return View(model);
+        }
+
+        public ActionResult Select()
+        {
+            return View();
         }
 
         public JsonResult Save(SecOrganization model)
@@ -135,5 +139,6 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         {
             return EasyUIHelper.GetDataGridPageData("SecuritySettings.Organization.List", "OrganizationId", page, rows);
         }
+
     }
 }

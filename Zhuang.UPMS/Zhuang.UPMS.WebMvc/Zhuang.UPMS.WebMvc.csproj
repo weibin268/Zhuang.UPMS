@@ -405,6 +405,7 @@
     <Content Include="App_Config\SqlCommands\SecuritySettings\Organization.sqlserver.config" />
     <Content Include="Areas\SecuritySettings\Views\Organization\List.cshtml" />
     <Content Include="Areas\SecuritySettings\Views\Organization\Edit.cshtml" />
+    <Content Include="Areas\SecuritySettings\Views\Organization\Select.cshtml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />

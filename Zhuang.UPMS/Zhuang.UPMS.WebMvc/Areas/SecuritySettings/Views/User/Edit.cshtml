@@ -30,6 +30,16 @@
             f_AjaxDialogSave(url, $dg1);
 
         }
+
+        function f_SelectOrg()
+        {
+            var url = '@Url.Content("~/SecuritySettings/Organization/Select")';
+            //if (id) {
+            //    url += "?id=" + id;
+            //}
+            debugger;
+            f_OpenDialog(url, { maximized: false, width: 500, height: 300, buttons:"" }, 2);
+        }
     </script>
 }
 
@@ -83,6 +93,12 @@
                        class="easyui-validatebox textbox" />
                 
             </td>
+        </tr>
+        <tr>
+            <td>所属组织:</td>
+            <td><input type="button" value="Btn" onclick="f_SelectOrg()"/></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
     <div>
