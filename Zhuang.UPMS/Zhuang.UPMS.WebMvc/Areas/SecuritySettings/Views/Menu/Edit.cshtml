@@ -15,16 +15,27 @@
 
             f_InitDialogTitle("@Model.MenuId");
 
+            var isExpand = "@{ var tempIsExpand = Model.IsExpand ? 1 : 0; @tempIsExpand}";
+            if (isExpand == 1) {
+                jQuery("#cbIsExpand").prop("checked", true);
+            }
         });
 
         function f_DialogSave() {
-
             var url = '@Url.Content("~/SecuritySettings/Menu/Save")';
-
+            jQuery("#cbIsExpand").val
             f_AjaxDialogSave(url, $dg1, function () {
                 parent.f_ReloadMenuTree();
             });
 
+        }
+
+        function onIsExpandChange() {
+            if (jQuery("#cbIsExpand").prop("checked") == true) {
+                jQuery("#cbIsExpand").val(true);
+            } else {
+                jQuery("#cbIsExpand").val(false);
+            }
         }
     </script>
 }
@@ -60,6 +71,14 @@
             <td>
                 <input type="text" name="Url" value="@Model.Url" style="width:300px"
                        class="easyui-validatebox textbox" data-options="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                是否展开：
+            </td>
+            <td>
+                <input type="checkbox" id="cbIsExpand" name="IsExpand" onchange="onIsExpandChange()" />
             </td>
         </tr>
     </table>

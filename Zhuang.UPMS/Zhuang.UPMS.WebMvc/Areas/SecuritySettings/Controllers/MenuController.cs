@@ -68,7 +68,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     }
                     else
                     {
-                        dba.UpdateFields(model, "Name", "Url",
+                        dba.UpdateFields(model, "Name", "Url", "IsExpand",
                             "MobilePhone",
                             "ModifiedById", "ModifiedDate");
                     }
