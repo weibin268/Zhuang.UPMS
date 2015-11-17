@@ -91,18 +91,25 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
         public JsonResult Delete(string id)
         {
             MyJsonResult mjr = new MyJsonResult();
-
-            try
+            using (DbAccessor dba = DbAccessor.Create())
             {
-                _menuService.DeleteRecursive(id);
+                try
+                {
+                    dba.BeginTran();
 
-                mjr.Success = true;
-            }
-            catch (Exception ex)
-            {
+                    _menuService.DeleteRecursive(id, dba);
 
-                mjr.Success = false;
-                mjr.Message = ex.Message;
+                    dba.CommitTran();
+
+                    mjr.Success = true;
+                }
+                catch (Exception ex)
+                {
+                    dba.RollbackTran();
+
+                    mjr.Success = false;
+                    mjr.Message = ex.Message;
+                }
             }
 
             return Json(mjr);

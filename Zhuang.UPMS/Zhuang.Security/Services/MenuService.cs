@@ -18,13 +18,18 @@ namespace Zhuang.Security.Services
 
         public void DeleteRecursive(string menuId)
         {
+            DeleteRecursive(menuId, _dba);
+        }
+
+        public void DeleteRecursive(string menuId, DbAccessor dba)
+        {
             string strSql = "select * from Sec_Menu where ParentId=#ParentId#";
-            var childrenMenu = _dba.QueryEntities<SecMenu>(strSql, new { ParentId = menuId });
+            var childrenMenu = dba.QueryEntities<SecMenu>(strSql, new { ParentId = menuId });
             foreach (var item in childrenMenu)
             {
                 DeleteRecursive(item.MenuId);
             }
-            _dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId=menuId});
+            dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = menuId });
         }
     }
 }
