@@ -27,7 +27,7 @@ namespace Zhuang.Security.Services
             var childrenMenu = dba.QueryEntities<SecMenu>(strSql, new { ParentId = menuId });
             foreach (var item in childrenMenu)
             {
-                DeleteRecursive(item.MenuId);
+                DeleteRecursive(item.MenuId, dba);
             }
             dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = menuId });
         }
