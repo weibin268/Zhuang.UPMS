@@ -17,6 +17,26 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         #region View
         public ActionResult Index()
         {
+
+            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM dbo.Sec_Menu
+            WHERE RecordStatus='Active'");
+
+            List<TreeModel> lsTree = new List<TreeModel>();
+
+            foreach (var item in lsSecMenu)
+            {
+                lsTree.Add(new TreeModel()
+                {
+                    id = item.MenuId,
+                    parentId = item.ParentId,
+                    text = item.Name,
+                    state = item.IsExpand ? TreeStateType.open.ToString() : TreeStateType.closed.ToString(),
+                    attributes = new TreeAttributes(){ url = item.Url }
+                });
+            }
+
+            ViewBag.TreeModels = TreeModel.ToTreeModel(lsTree);
+
             return View();
         }
         #endregion

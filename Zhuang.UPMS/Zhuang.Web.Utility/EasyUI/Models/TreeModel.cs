@@ -11,6 +11,11 @@ namespace Zhuang.Web.Utility.EasyUI.Models
         closed,
     }
 
+    public class TreeAttributes
+    {
+        public string url { get; set; }
+    }
+
     public class TreeModel
     {
         public string id { get; set; }
@@ -18,7 +23,7 @@ namespace Zhuang.Web.Utility.EasyUI.Models
         public string text { get; set; }
         public string state { get; set; }
         public bool @checked { get; set; }
-        public object attributes { get; set; }
+        public dynamic attributes { get; set; }
         public List<TreeModel> children { get; set; }
 
 

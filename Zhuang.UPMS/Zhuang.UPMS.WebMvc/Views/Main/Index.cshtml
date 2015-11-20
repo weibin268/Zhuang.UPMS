@@ -85,7 +85,7 @@
 
             $tabsCenter = $('#tabsCenter');
 
-            jQuery("#treeMenu").tree({
+            @*jQuery("#treeMenu").tree({
                 url: '@Url.Content("~/Main/GetMenus")',
                 //loadFilter: function (rows) {
                 //    return convert(rows);
@@ -93,7 +93,7 @@
                 onDblClick: function (node) {
                     addTab(node.text, node.attributes.url);
                 }
-            });
+            });*@
 
 
 
@@ -142,17 +142,38 @@
 
 <div data-options="region:'north'" style="height: 50px; background-color: #20375f; padding-left:10px;padding-right:20px; ">
     <div class="header-tool" style="float:right;">
-        <a href='@Url.Action("Logout","Login")'>退出</a>
+        <a href='@Url.Action("Logout", "Login")'>退出</a>
     </div>
     <div class="header-tool" style="float:right;">
-        <span>欢迎：</span><span>@Zhuang.Security.SecurityContext.Current.User.Name
-        (@Zhuang.Security.SecurityContext.Current.User.LoginName)</span>
+        <span>欢迎：</span><span>
+            @Zhuang.Security.SecurityContext.Current.User.Name
+            (@Zhuang.Security.SecurityContext.Current.User.LoginName)
+        </span>
     </div>
 </div>
 @*<div data-options="region:'south',split:true" style="height:50px;"></div>*@
 @*<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>*@
 <div data-options="region:'west',split:true" title="菜单导航" style="width:200px;">
-    <ul id="treeMenu"></ul>
+
+    @*<ul id="treeMenu"></ul>*@
+
+    @{var lsTreeModel = (List<Zhuang.Web.Utility.EasyUI.Models.TreeModel>)ViewBag.TreeModels;}
+    <div class="easyui-accordion" style="width:100%;height:95%;">
+        @foreach (var item in lsTreeModel)
+        {
+            <div title="@item.text" style="overflow:auto;padding:5px;">
+                <ul class="easyui-tree">
+                    @foreach (var item2 in item.children)
+                    {
+                        <li>
+                            <a href="javascript:void(0)" onclick="addTab('@item2.text','@item2.attributes.url')">@item2.text</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
 </div>
 <div data-options="region:'center'">
     <div id="tabsCenter" class="easyui-tabs" fit="true" plain="true">
