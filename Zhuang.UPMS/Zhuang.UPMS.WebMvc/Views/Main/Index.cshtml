@@ -162,12 +162,12 @@
 </div>
 @*<div data-options="region:'south',split:true" style="height:50px;"></div>*@
 @*<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>*@
-<div data-options="region:'west',split:true" title="菜单导航" style="width:200px;">
+<div data-options="region:'west',split:true" title="菜单导航" style="width:200px;overflow-y:hidden;">
 
     @*<ul id="treeMenu"></ul>*@
 
     @{var lsTreeModel = (List<Zhuang.Web.Utility.EasyUI.Models.TreeModel>)ViewBag.TreeModels;}
-    <div class="easyui-accordion" style="width:100%;height:95%;">
+    <div class="easyui-accordion" style="width:100%;height:100%;">
         @foreach (var item in lsTreeModel)
         {
             <div title="@item.text" style="overflow:auto;padding:5px;">
