@@ -32,7 +32,7 @@
                 text-decoration: underline;
             }
 
-        .easyui-tree a:link {
+        .menu-ul a:link {
             color: inherit;
             text-decoration: none;
         }
@@ -171,10 +171,10 @@
         @foreach (var item in lsTreeModel)
         {
             <div title="@item.text" style="overflow:auto;padding:5px;border:0">
-                <ul class="easyui-tree">
+                <ul class="menu-ul" style="margin:0px;">
                     @foreach (var item2 in item.children)
                     {
-                        <li>
+                        <li style="list-style-type:none;padding-bottom:5px;font-size:14px;">
                             <a href="javascript:void(0)" onclick="addTab('@item2.text','@item2.attributes.url')">@item2.text</a>
                         </li>
                     }
