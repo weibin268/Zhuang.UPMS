@@ -167,10 +167,10 @@
     @*<ul id="treeMenu"></ul>*@
 
     @{List<Zhuang.Web.Utility.EasyUI.Models.TreeModel> lsTreeModel = ViewBag.TreeModels;}
-    <div class="easyui-accordion" style="width:100%;height:100%;">
+    <div class="easyui-accordion" border="false">
         @foreach (var item in lsTreeModel)
         {
-            <div title="@item.text" style="overflow:auto;padding:5px;">
+            <div title="@item.text" style="overflow:auto;padding:5px;border:0">
                 <ul class="easyui-tree">
                     @foreach (var item2 in item.children)
                     {
