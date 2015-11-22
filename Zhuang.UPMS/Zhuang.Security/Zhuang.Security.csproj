@@ -42,8 +42,8 @@
       <HintPath>..\packages\Zhuang.Data.1.1.3\lib\Zhuang.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Zhuang.Model.Common">
-      <HintPath>..\..\..\Zhuang.ORM\Zhuang.Model.Common\bin\Debug\Zhuang.Model.Common.dll</HintPath>
+    <Reference Include="Zhuang.Models">
+      <HintPath>..\..\..\Zhuang.ORM\Zhuang.Models\bin\Debug\Zhuang.Models.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

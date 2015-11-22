@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Zhuang.Model.Common;
+using Zhuang.Models;
 using Zhuang.Security;
 using Zhuang.Security.Services;
 using Zhuang.Web.Utility.Images;
