@@ -502,6 +502,10 @@
       <Project>{37d969a9-0afb-4f66-9e63-44ece6895782}</Project>
       <Name>Zhuang.Security</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Zhuang.Web.EasyUI\Zhuang.Web.EasyUI.csproj">
+      <Project>{4e794858-d04d-4d66-9aaf-7fcd396eab80}</Project>
+      <Name>Zhuang.Web.EasyUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Zhuang.Web.Utility\Zhuang.Web.Utility.csproj">
       <Project>{e0d101fa-d0fb-43d2-ae63-5cec03fde279}</Project>
       <Name>Zhuang.Web.Utility</Name>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Models;
-using Zhuang.Web.Utility.EasyUI.Models;
+using Zhuang.Web.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Controllers
 {

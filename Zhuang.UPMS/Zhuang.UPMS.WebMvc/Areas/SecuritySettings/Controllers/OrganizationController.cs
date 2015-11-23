@@ -8,7 +8,7 @@ using Zhuang.Models;
 using Zhuang.Security;
 using Zhuang.Security.Services;
 using Zhuang.UPMS.WebMvc.App_Code;
-using Zhuang.Web.Utility.EasyUI.Models;
+using Zhuang.Web.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 {
