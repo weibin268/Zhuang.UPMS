@@ -149,14 +149,15 @@ namespace Zhuang.Web.Utility.Images
         /// <param name="validateNum">验证码</param>
         public byte[] CreateValidateGraphic(string validateCode)
         {
-            Bitmap image = new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22);
+            Bitmap image = new Bitmap((int)Math.Ceiling(validateCode.Length * 16.0), 26);
             Graphics g = Graphics.FromImage(image);
             try
             {
                 //生成随机生成器
                 Random random = new Random();
                 //清空图片背景色
-                g.Clear(Color.White);
+                //g.Clear(Color.White);
+                g.Clear(Color.LightPink);
                 //画图片的干扰线
                 for (int i = 0; i < 25; i++)
                 {
@@ -164,11 +165,11 @@ namespace Zhuang.Web.Utility.Images
                     int x2 = random.Next(image.Width);
                     int y1 = random.Next(image.Height);
                     int y2 = random.Next(image.Height);
-                    g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
+                    g.DrawLine(new Pen(Color.Crimson), x1, y1, x2, y2);
                 }
-                Font font = new Font("Arial", 12, (FontStyle.Bold | FontStyle.Italic));
+                Font font = new Font("Arial", 16, (FontStyle.Bold | FontStyle.Italic));
                 LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, image.Width, image.Height),
-                 Color.Blue, Color.DarkRed, 1.2f, true);
+                 Color.Black, Color.DarkRed, 1.2f, true);
                 g.DrawString(validateCode, font, brush, 3, 2);
                 //画图片的前景干扰点
                 for (int i = 0; i < 100; i++)
