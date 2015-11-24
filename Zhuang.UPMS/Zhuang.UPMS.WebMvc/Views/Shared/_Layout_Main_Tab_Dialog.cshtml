@@ -7,10 +7,12 @@
     <title>@ViewBag.Title</title>
 
 </head>
-<body class="">
-    <div style="margin-top:20px;">
+<body class="easyui-layout" fit="true">
+    
+    <div style="margin-top:10px;">
         @RenderBody()
     </div>
+
     @RenderSection("scripts", required: false)
 
 </body>
