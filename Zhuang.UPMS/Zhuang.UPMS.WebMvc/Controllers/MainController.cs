@@ -30,8 +30,8 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeStateType.open.ToString() : TreeStateType.closed.ToString(),
-                    attributes = new TreeAttributes(){ url = item.Url }
+                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
+                    attributes = new TreeUrlReturnModel.Attributes(){ url = item.Url }
                 });
             }
 
@@ -58,7 +58,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeStateType.open.ToString() : TreeStateType.closed.ToString(),
+                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
                     attributes = new { url = item.Url }
                 });
             }

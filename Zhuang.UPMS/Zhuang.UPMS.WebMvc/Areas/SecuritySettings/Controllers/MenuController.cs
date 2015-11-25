@@ -130,7 +130,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeStateType.open.ToString() : TreeStateType.closed.ToString(),
+                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
                     attributes = new { url = item.Url }
                 });
             }

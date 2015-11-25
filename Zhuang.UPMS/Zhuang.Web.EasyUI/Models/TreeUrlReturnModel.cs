@@ -5,19 +5,22 @@ using System.Text;
 
 namespace Zhuang.Web.EasyUI.Models
 {
-    public enum TreeStateType
-    {
-        open,
-        closed,
-    }
 
-    public class TreeAttributes
-    {
-        public string url { get; set; }
-    }
+
 
     public class TreeUrlReturnModel
     {
+        public class Attributes
+        {
+            public string url { get; set; }
+        }
+
+        public enum State
+        {
+            open,
+            closed,
+        }
+
         public string id { get; set; }
         public string parentId { get; set; }
         public string text { get; set; }
@@ -50,7 +53,7 @@ namespace Zhuang.Web.EasyUI.Models
             //如是叶子节点
             if (children.Count == 0)
             {
-                lsRawModel.Find(c => c.id == parentId).state = TreeStateType.open.ToString();
+                lsRawModel.Find(c => c.id == parentId).state = State.open.ToString();
             }
 
             children.ForEach(c =>

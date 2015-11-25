@@ -127,7 +127,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     id = item.OrganizationId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = TreeStateType.open.ToString()
+                    state = TreeUrlReturnModel.State.open.ToString()
                 });
             }
 
