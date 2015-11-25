@@ -30,7 +30,7 @@ namespace Zhuang.Web.EasyUI.Models
         public List<TreeUrlReturnModel> children { get; set; }
 
 
-        public static List<TreeUrlReturnModel> ToRecursiveModel(List<TreeUrlReturnModel> lsRawModel)
+        public static List<TreeUrlReturnModel> ToTreeUrlReturnModel(List<TreeUrlReturnModel> lsRawModel)
         {
             List<TreeUrlReturnModel> lsResult = new List<TreeUrlReturnModel>();
 

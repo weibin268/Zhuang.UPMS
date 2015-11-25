@@ -131,7 +131,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToRecursiveModel(lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree));
             return contentResult;
         }
 

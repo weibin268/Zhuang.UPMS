@@ -35,7 +35,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 });
             }
 
-            ViewBag.TreeModels = TreeUrlReturnModel.ToRecursiveModel(lsTree);
+            ViewBag.TreeModels = TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree);
 
             return View();
         }
@@ -63,7 +63,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToRecursiveModel( lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel( lsTree));
             return contentResult;
         }
         #endregion
