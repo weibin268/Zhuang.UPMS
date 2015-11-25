@@ -16,7 +16,7 @@ namespace Zhuang.Web.EasyUI.Models
         public string url { get; set; }
     }
 
-    public class TreeModel
+    public class TreeUrlReturnModel
     {
         public string id { get; set; }
         public string parentId { get; set; }
@@ -24,12 +24,12 @@ namespace Zhuang.Web.EasyUI.Models
         public string state { get; set; }
         public bool @checked { get; set; }
         public dynamic attributes { get; set; }
-        public List<TreeModel> children { get; set; }
+        public List<TreeUrlReturnModel> children { get; set; }
 
 
-        public static List<TreeModel> ToTreeModel(List<TreeModel> lsRawModel)
+        public static List<TreeUrlReturnModel> ToRecursiveModel(List<TreeUrlReturnModel> lsRawModel)
         {
-            List<TreeModel> lsResult = new List<TreeModel>();
+            List<TreeUrlReturnModel> lsResult = new List<TreeUrlReturnModel>();
 
             lsResult = lsRawModel.FindAll(c =>
             {
@@ -43,7 +43,7 @@ namespace Zhuang.Web.EasyUI.Models
             return lsResult;
         }
 
-        private static List<TreeModel> RecursiveChildren(List<TreeModel> lsRawModel, string parentId)
+        private static List<TreeUrlReturnModel> RecursiveChildren(List<TreeUrlReturnModel> lsRawModel, string parentId)
         {
             var children = lsRawModel.FindAll(cc => { return cc.parentId == parentId;});
 

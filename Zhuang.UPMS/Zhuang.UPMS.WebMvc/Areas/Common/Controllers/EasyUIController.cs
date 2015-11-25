@@ -33,7 +33,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.Common.Controllers
                 }
             }
 
-            DataGridUrlReturnDataModel model = new DataGridUrlReturnDataModel();
+            DataGridUrlReturnModel model = new DataGridUrlReturnModel();
 
             int totalRowCount = 0;
             model.rows = _dba.PageQueryDataTable("SecuritySettings.User.List", "userid", page, rows, out totalRowCount, dicParam);

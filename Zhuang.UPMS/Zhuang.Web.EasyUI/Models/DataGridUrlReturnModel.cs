@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Zhuang.Web.EasyUI.Models
 {
-    public class DataGridUrlReturnDataModel
+    public class DataGridUrlReturnModel
     {
         public int total { get; set; }
         public object rows { get; set; }
