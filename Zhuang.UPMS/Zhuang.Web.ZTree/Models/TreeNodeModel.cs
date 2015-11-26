@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Zhuang.Web.ZTree.Model
+namespace Zhuang.Web.ZTree.Models
 {
     public class TreeNodeModel
     {
