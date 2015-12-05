@@ -10,8 +10,14 @@ namespace Zhuang.UPMS.WebMvc.App_Code
 {
     public static class EasyUIHelper
     {
-        public static ContentResult GetDataGridPageData(string strSql, string strOrderBy)
+        public static ContentResult GetDataGridPageData()
         {
+            string strSql = HttpContext.Current.Request.Form["sql"];
+            if (strSql.Trim().Contains(" "))
+            {
+                throw new Exception("参数“sql”格式错误！");
+            }
+            string strOrderBy = HttpContext.Current.Request.Form["orderby"];
             int page = Convert.ToInt32(HttpContext.Current.Request.Form["page"]);
             int rows = Convert.ToInt32(HttpContext.Current.Request.Form["rows"]);
 

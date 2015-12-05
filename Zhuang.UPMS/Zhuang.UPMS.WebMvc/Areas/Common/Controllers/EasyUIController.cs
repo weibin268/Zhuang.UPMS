@@ -22,15 +22,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.Common.Controllers
 
         public ContentResult GetPage()
         {
-            string strSql = Request.Form["sql"];
-            string strOrderBy = Request.Form["orderby"];
-
-            if (strSql.Trim().Contains(" "))
-            {
-                throw new Exception("参数“sql”格式错误！");
-            }
-
-            return EasyUIHelper.GetDataGridPageData(strSql, strOrderBy);
+            return EasyUIHelper.GetDataGridPageData();
         }
 
     }
