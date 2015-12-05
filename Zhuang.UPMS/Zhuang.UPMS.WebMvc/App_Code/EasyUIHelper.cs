@@ -10,8 +10,11 @@ namespace Zhuang.UPMS.WebMvc.App_Code
 {
     public static class EasyUIHelper
     {
-        public static ContentResult GetDataGridPageData(string strSql, string strOrderBy, int page, int rows)
+        public static ContentResult GetDataGridPageData(string strSql, string strOrderBy)
         {
+            int page = Convert.ToInt32(HttpContext.Current.Request.Form["page"]);
+            int rows = Convert.ToInt32(HttpContext.Current.Request.Form["rows"]);
+
             DbAccessor dba = DbAccessor.Get();
 
             ContentResult cr = new ContentResult();

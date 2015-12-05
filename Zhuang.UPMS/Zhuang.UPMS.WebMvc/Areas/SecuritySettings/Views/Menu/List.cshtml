@@ -15,10 +15,9 @@
             }
 
             $dg1 = $('#dg1');
-            getListUrl = '@Url.Content("~/SecuritySettings/Menu/GetList")';
 
             $dg1.datagrid({
-                url: getListUrl,
+                url: '@Url.Content("~/Common/EasyUI/GetPage")',
                 columns: [[
                     { field: 'MenuId', title: 'MenuId', width: 100, hidden: true },
                     { field: 'Name', title: '菜单名', width: 200, halign: "center" },
@@ -40,7 +39,8 @@
                 pageSize: 20,
                 pageList: [10, 20, 30, 50, 100, 1000, 5000, 10000],
                 toolbar: "#dg1Toolbar",
-                queryParams: $(document.forms["filter"]).serializeJsonFilter()
+                queryParams: $.extend({ sql: "SecuritySettings.Menu.List", orderby: "menuid" },
+                    $(document.forms["filter"]).serializeJsonFilter())
             });
 
         });

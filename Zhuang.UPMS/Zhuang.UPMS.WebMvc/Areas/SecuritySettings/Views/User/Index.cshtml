@@ -8,7 +8,6 @@
 @section scripts{
 
     <script type="text/javascript">
-        var getListUrl = '@Url.Content("~/SecuritySettings/User/GetList")';
         var $dg1;
 
         jQuery(function () {
@@ -16,7 +15,7 @@
             $dg1 = $('#dg1');
 
             $dg1.datagrid({
-                url: getListUrl,
+                url: '@Url.Content("~/Common/EasyUI/GetPage")',
                 columns: [[
                     { field: 'UserId', title: 'UserId', width: 100, hidden: true },
                     { field: 'LoginName', title: '登录名', width: 200, halign: "center" },
@@ -39,7 +38,8 @@
                 idField: 'UserId',
                 pageSize: 20,
                 pageList: [10, 20, 30, 50, 100, 1000, 5000, 10000],
-                toolbar: "#dg1Toolbar"
+                toolbar: "#dg1Toolbar",
+                queryParams: { sql: "SecuritySettings.User.List", orderby: "userid" }
             });
 
         });
@@ -75,7 +75,7 @@
                 $.messager.alert('提示', '请先选择记录！');
             }
 
-       
+
 
         }
 

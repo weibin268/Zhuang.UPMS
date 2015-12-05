@@ -135,10 +135,5 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return contentResult;
         }
 
-        public ContentResult GetList(int page, int rows)
-        {
-            return EasyUIHelper.GetDataGridPageData("SecuritySettings.Organization.List", "OrganizationId", page, rows);
-        }
-
     }
 }

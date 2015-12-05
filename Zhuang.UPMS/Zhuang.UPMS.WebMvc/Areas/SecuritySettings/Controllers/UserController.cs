@@ -116,9 +116,5 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return Json(mjr);
         }
 
-        public ContentResult GetList(int page, int rows)
-        {
-            return EasyUIHelper.GetDataGridPageData("SecuritySettings.User.List", "userid", page, rows);
-        }
     }
 }
