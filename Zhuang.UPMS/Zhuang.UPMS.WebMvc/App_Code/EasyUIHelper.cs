@@ -12,12 +12,12 @@ namespace Zhuang.UPMS.WebMvc.App_Code
     {
         public static ContentResult GetDataGridPageData()
         {
-            string strSql = HttpContext.Current.Request.Form["sql"];
+            string strSql = HttpContext.Current.Request.QueryString["sql"];
             if (strSql.Trim().Contains(" "))
             {
                 throw new Exception("参数“sql”格式错误！");
             }
-            string strOrderBy = HttpContext.Current.Request.Form["orderby"];
+            string strOrderBy = HttpContext.Current.Request.QueryString["orderby"];
             int page = Convert.ToInt32(HttpContext.Current.Request.Form["page"]);
             int rows = Convert.ToInt32(HttpContext.Current.Request.Form["rows"]);
 

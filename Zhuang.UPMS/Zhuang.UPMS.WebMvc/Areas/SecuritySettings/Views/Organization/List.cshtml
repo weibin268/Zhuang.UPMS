@@ -10,15 +10,14 @@
     <script type="text/javascript">
 
         jQuery(function () {
-            if (!jQuery("#hiParentId").val())
-            {
+            if (!jQuery("#hiParentId").val()) {
                 jQuery("#aAdd").hide();
             }
 
             $dg1 = $('#dg1');
 
             $dg1.datagrid({
-                url: '@Url.Content("~/Common/EasyUI/GetPage")',
+                url: '@Url.Content("~/Common/EasyUI/GetPage")?' + $.param({ sql: "SecuritySettings.Organization.List", orderby: "OrganizationId" }),
                 columns: [[
                     { field: 'OrganizationId', title: 'OrganizationId', width: 100, hidden: true },
                     { field: 'Name', title: '部门名', width: 200, halign: "center" },
@@ -39,8 +38,7 @@
                 pageSize: 20,
                 pageList: [10, 20, 30, 50, 100, 1000, 5000, 10000],
                 toolbar: "#dg1Toolbar",
-                queryParams: $.extend({ sql: "SecuritySettings.Organization.List", orderby: "OrganizationId" },
-                    $(document.forms["filter"]).serializeJsonFilter())
+                queryParams: $(document.forms["filter"]).serializeJsonFilter()
             });
 
         });
@@ -84,8 +82,7 @@
 
         }
 
-        function f_Edit()
-        {
+        function f_Edit() {
             var row = $dg1.datagrid("getSelected");
             if (row) {
 
