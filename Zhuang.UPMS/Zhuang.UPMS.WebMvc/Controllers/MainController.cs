@@ -18,7 +18,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         public ActionResult Index()
         {
 
-            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM dbo.Sec_Menu
+            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
             WHERE RecordStatus='Active'");
 
             List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
@@ -46,7 +46,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         {
             ContentResult contentResult = new ContentResult();
 
-            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM dbo.Sec_Menu
+            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
             WHERE RecordStatus='Active'");
 
             List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
