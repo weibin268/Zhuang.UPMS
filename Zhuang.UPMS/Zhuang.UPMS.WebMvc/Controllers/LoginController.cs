@@ -24,43 +24,53 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         {
             MyJsonResult mjr = new MyJsonResult();
 
-            var obj = Session["ValidateCode"];
-            if (obj == null || obj.ToString() != ValidateCode)
+            try
             {
-                mjr.Success = false;
-                mjr.Message = "验证码不正确！";
-                mjr.Data = 1;
-                if (obj == null)
-                {
-                    mjr.Data = 11;
-                }
-                return Json(mjr);
-            }
 
-            UserService userService = new UserService();
 
-            var user = userService.GetUserByLoginName(model.LoginName);
-
-            if (user == null)
-            {
-                mjr.Success = false;
-                mjr.Message = "用户名不正确！";
-                mjr.Data = 2;
-            }
-            else
-            {
-                if (user.Password != model.Password)
+                var obj = Session["ValidateCode"];
+                if (obj == null || obj.ToString() != ValidateCode)
                 {
                     mjr.Success = false;
-                    mjr.Message = "密码不正确！";
-                    mjr.Data = 3;
+                    mjr.Message = "验证码不正确！";
+                    mjr.Data = 1;
+                    if (obj == null)
+                    {
+                        mjr.Data = 11;
+                    }
+                    return Json(mjr);
+                }
+
+                UserService userService = new UserService();
+
+                var user = userService.GetUserByLoginName(model.LoginName);
+
+                if (user == null)
+                {
+                    mjr.Success = false;
+                    mjr.Message = "用户名不正确！";
+                    mjr.Data = 2;
                 }
                 else
                 {
-                    SecurityContext.Current = new SecurityContext() { User = user };
-                    //Session[SSessionIndex.IsAuthorizedForCKEditor] = true;
-                    mjr.Success = true;
+                    if (user.Password != model.Password)
+                    {
+                        mjr.Success = false;
+                        mjr.Message = "密码不正确！";
+                        mjr.Data = 3;
+                    }
+                    else
+                    {
+                        SecurityContext.Current = new SecurityContext() { User = user };
+                        //Session[SSessionIndex.IsAuthorizedForCKEditor] = true;
+                        mjr.Success = true;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                mjr.Success = false;
+                mjr.Message = ex.Message;
             }
 
 
@@ -80,7 +90,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             Session["ValidateCode"] = strValidateCode;
             return File(vc.CreateValidateGraphic(strValidateCode), "image/jpeg");
 
-        } 
+        }
         #endregion
     }
 }
