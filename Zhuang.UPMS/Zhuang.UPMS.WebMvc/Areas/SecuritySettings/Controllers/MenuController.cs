@@ -33,7 +33,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
         public ActionResult Edit(string id, string ParentId)
         {
-            ViewBag.ParentName = _dba.ExecuteScalar<string>("SELECT Name FROM dbo.Sec_Menu WHERE MenuId=#MenuId#",
+            ViewBag.ParentName = _dba.ExecuteScalar<string>("SELECT Name FROM Sec_Menu WHERE MenuId=#MenuId#",
                 new { MenuId = ParentId });
 
             SecMenu model = new SecMenu();
