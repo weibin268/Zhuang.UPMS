@@ -50,7 +50,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     {
 
                         #region 校验数据
-                        int count = _dba.ExecuteScalar<int>("SecuritySettings.User.CountByLoginName",
+                        dynamic count = _dba.ExecuteScalar<dynamic>("SecuritySettings.User.CountByLoginName",
                                            new { LoginName = model.LoginName, RecordStatus = RecordStatus.Active });
 
                         if (count > 0)
