@@ -10,8 +10,11 @@
 
     <script type="text/javascript">
 
+        var single = '@Request.QueryString["single"]';
+        if (single == 'y' || single == 'Y') single = true; else single = false;
+
         jQuery("#treeLeft").tree({
-            url: '@Url.Content("~/Common/EasyUI/GetTree")'+"?sql="+'@Request.QueryString["sql"]',
+            url: '@Url.Content("~/Common/EasyUI/GetTree")' + "?sql=" + '@Request.QueryString["sql"]',
             //cascadeCheck: true,
             //onlyLeafCheck: true,
             //checkbox:true,
@@ -23,11 +26,16 @@
                 var id = node.id;
                 var text = node.text;
 
-                var tempRow= { value: id, text: text };
-                var rowIndex=jQuery("#ulSselected").datalist("getRowIndex", id);
-                if (rowIndex == -1)
-                {
+                var tempRow = { value: id, text: text };
+                var rowIndex = jQuery("#ulSselected").datalist("getRowIndex", id);
+                if (single) {
+                    jQuery("#ulSselected").datalist("loadData", { total: 0, rows: [] });
                     jQuery("#ulSselected").datalist("appendRow", tempRow);
+                }
+                else {
+                    if (rowIndex == -1) {
+                        jQuery("#ulSselected").datalist("appendRow", tempRow);
+                    }
                 }
             }
         });
