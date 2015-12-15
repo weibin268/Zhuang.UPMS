@@ -412,6 +412,7 @@
     <Content Include="App_Config\SqlCommands\SecuritySettings\Menu.mysql.config" />
     <Content Include="App_Config\SqlCommands\SecuritySettings\User.mysql.config" />
     <Content Include="App_Config\SqlCommands\SecuritySettings\Organization.mysql.config" />
+    <Content Include="Areas\Common\Views\SelectDialog\Tree.cshtml" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
@@ -458,6 +459,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Common\CommonAreaRegistration.cs" />
     <Compile Include="Areas\Common\Controllers\EasyUIController.cs" />
+    <Compile Include="Areas\Common\Controllers\SelectDialogController.cs" />
     <Compile Include="Areas\Portal\PortalAreaRegistration.cs" />
     <Compile Include="Areas\SecuritySettings\Controllers\MenuController.cs" />
     <Compile Include="Areas\SecuritySettings\Controllers\OrganizationController.cs" />
