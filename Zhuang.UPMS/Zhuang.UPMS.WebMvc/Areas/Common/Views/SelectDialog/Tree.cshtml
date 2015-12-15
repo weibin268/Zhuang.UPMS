@@ -11,7 +11,7 @@
     <script type="text/javascript">
 
         jQuery("#treeLeft").tree({
-            url: '@Url.Content("~/SecuritySettings/Organization/GetTree")',
+            url: '@Url.Content("~/Common/EasyUI/GetTree")'+"?sql="+'@Request.QueryString["sql"]',
             //cascadeCheck: true,
             //onlyLeafCheck: true,
             //checkbox:true,

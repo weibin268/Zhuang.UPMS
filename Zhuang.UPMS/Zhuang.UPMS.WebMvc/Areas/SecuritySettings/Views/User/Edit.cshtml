@@ -16,8 +16,7 @@
             jQuery("#selSex").val('@Model.Sex');
 
 
-            if ("@Model.UserId")
-            {
+            if ("@Model.UserId") {
                 jQuery("#LoginName").attr("readonly", "readonly");
                 //jQuery("#LoginName").attr("disabled", "disabled");
             }
@@ -31,9 +30,8 @@
 
         }
 
-        function f_SelectOrg()
-        {
-            var url = '@Url.Content("~/Common/SelectDialog/Tree")';
+        function f_SelectOrg() {
+            var url = '@Url.Content("~/Common/SelectDialog/Tree")' + "?sql=" + "SecuritySettings.Organization.GetTree";
             f_OpenDialog(url, { maximized: false, width: 500, height: 350, buttons: "#dlgButtonOKCancel" }, 2);
         }
     </script>

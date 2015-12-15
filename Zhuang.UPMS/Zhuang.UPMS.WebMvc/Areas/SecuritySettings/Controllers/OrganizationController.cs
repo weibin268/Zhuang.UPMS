@@ -44,11 +44,6 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return View(model);
         }
 
-        public ActionResult Select()
-        {
-            return View();
-        }
-
         public JsonResult Save(SecOrganization model)
         {
             MyJsonResult mjr = new MyJsonResult();
@@ -110,29 +105,6 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             }
 
             return Json(mjr);
-        }
-
-        public ContentResult GetTree()
-        {
-            ContentResult contentResult = new ContentResult();
-
-            var lsSecOrganization = _dba.QueryEntities<SecOrganization>("SecuritySettings.Organization.GetTree");
-
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
-
-            foreach (var item in lsSecOrganization)
-            {
-                lsTree.Add(new TreeUrlReturnModel()
-                {
-                    id = item.OrganizationId,
-                    parentId = item.ParentId,
-                    text = item.Name,
-                    state = TreeUrlReturnModel.State.open.ToString()
-                });
-            }
-
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree));
-            return contentResult;
         }
 
     }
