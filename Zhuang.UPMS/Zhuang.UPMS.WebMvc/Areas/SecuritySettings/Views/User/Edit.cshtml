@@ -41,7 +41,11 @@
         }
 
         function f_TreeOK(id, rows) {
-            alert(rows[0].text);
+            debugger;
+            if (id == "org") {
+                jQuery("#OrgName").val(rows[0].text);
+                jQuery("#OrgId").val(rows[0].value);
+            }
         }
 
     </script>
@@ -101,8 +105,9 @@
         <tr>
             <td>所属组织:</td>
             <td>
-                <input type="text" name="OrgName" 
+                <input type="text" id="OrgName" name="OrgName" 
                        class="easyui-validatebox textbox" data-options="required:true" />
+                <input type="hidden" id="OrgId" name="OrgId"/>
             </td>
             <td><input type="button" value="选择组织" onclick="f_SelectOrg()" /></td>
             <td></td>
