@@ -9,7 +9,7 @@
 @section scripts{
 
     <script type="text/javascript">
-
+        var id = '@Request.QueryString["id"]';
         var single = '@Request.QueryString["single"]';
         if (single == 'y' || single == 'Y') single = true; else single = false;
 
@@ -39,6 +39,12 @@
                 }
             }
         });
+
+        function f_OK() {
+            var rows = jQuery("#ulSselected").datalist("getRows");
+            if (rows.length == 0) alert("请选择！");
+            if (f_TreeOK) f_TreeOK(id, rows);
+        }
 
     </script>
 }

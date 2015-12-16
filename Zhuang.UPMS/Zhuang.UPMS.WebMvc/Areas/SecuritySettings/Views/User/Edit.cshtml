@@ -32,12 +32,18 @@
 
         function f_SelectOrg() {
             var param = jQuery.param({
+                id: "org",
                 sql: "SecuritySettings.Organization.GetTree",
                 single: "y"
             });
             var url = '@Url.Content("~/Common/SelectDialog/Tree")' + "?" + param;
             f_OpenDialog(url, { maximized: false, width: 500, height: 350, buttons: "#dlgButtonOKCancel" }, 2);
         }
+
+        function f_TreeOK(id, rows) {
+            alert(rows[0].text);
+        }
+
     </script>
 }
 
