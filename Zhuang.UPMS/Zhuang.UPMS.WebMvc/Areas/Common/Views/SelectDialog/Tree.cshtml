@@ -48,17 +48,34 @@
             f_CloseDialog(2);
         }
 
+        function f_ClearSelected()
+        {
+            jQuery("#ulSselected").datalist("loadData", { total: 0, rows: [] });
+        }
     </script>
 }
 
 <div class="easyui-layout" fit="true">
 
-    <div data-options="region:'west',split:true" style="width:50%;">
-        <ul id="treeLeft"></ul>
+    <div data-options="region:'west',split:true,border:false" style="width:50%;">
+        <div class="easyui-panel" title="待选列表" style="height:100%;" data-options="tools:'#tt1'">
+            <ul id="treeLeft"></ul>
+        </div>
+        <div id="tt1">
+
+        </div>
     </div>
 
-    <div data-options="region:'center',split:true" style="width:50%;">
-        <ul class="easyui-datalist" id="ulSselected" data-options="idField:'value'"></ul>
+    <div data-options="region:'center',split:true,border:false" style="width:50%;">
+
+        <div class="easyui-panel" title="选中列表" style="height:100%;" data-options="tools:'#tt2'">
+            <ul class="easyui-datalist" id="ulSselected" data-options="idField:'value'" style="height:100%;"></ul>
+        </div>
+
+
+        <div id="tt2">
+            <a href="javascript:void(0)" onclick="f_ClearSelected()" style="width:auto;">清空</a>
+        </div>
     </div>
 </div>
 
