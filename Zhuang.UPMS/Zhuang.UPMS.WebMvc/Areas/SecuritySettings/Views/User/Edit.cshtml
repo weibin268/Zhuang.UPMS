@@ -41,10 +41,16 @@
         }
 
         function f_TreeOK(id, rows) {
-            debugger;
             if (id == "org") {
-                jQuery("#OrgName").val(rows[0].text);
-                jQuery("#OrgId").val(rows[0].value);
+
+                if (rows.length == 0) {
+                    jQuery("#OrgName").val("");
+                    jQuery("#OrgId").val("");
+                } else {
+                    jQuery("#OrgName").val(rows[0].text);
+                    jQuery("#OrgId").val(rows[0].value);
+                }
+
             }
         }
 

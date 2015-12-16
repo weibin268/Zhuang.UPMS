@@ -42,11 +42,9 @@
 
         function f_OK() {
             var rows = jQuery("#ulSselected").datalist("getRows");
-            if (rows.length == 0) {
-                alert("请选择！");
-                return;
-            }
+            
             if (f_TreeOK) f_TreeOK(id, rows);
+
             f_CloseDialog(2);
         }
 
