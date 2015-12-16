@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,6 +30,11 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             if (id != null)
             {
                 user = _userService.GetUserById(id);
+                string strSql = @"SELECT Name FROM dbo.Sec_Organization WHERE OrganizationId=#OrganizationId#";
+                string orgName = _dba.ExecuteScalar<string>(strSql, new { OrganizationId = user.OrganizationId });
+
+                ViewBag.OrgName = orgName;
+                
             }
             return View(user);
         }
@@ -70,7 +76,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     else
                     {
                         dba.UpdateFields(model, "LoginName", "Password", "Name", "Sex", "Birthday",
-                            "MobilePhone",
+                            "MobilePhone", "OrganizationId",
                             "ModifiedById", "ModifiedDate");
                     }
 

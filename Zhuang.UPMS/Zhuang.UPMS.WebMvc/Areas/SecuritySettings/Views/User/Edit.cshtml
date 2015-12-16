@@ -112,8 +112,8 @@
             <td>所属组织:</td>
             <td>
                 <input type="text" id="OrgName" name="OrgName" 
-                       class="easyui-validatebox textbox" data-options="required:true" />
-                <input type="hidden" id="OrgId" name="OrgId"/>
+                       class="easyui-validatebox textbox" data-options="required:true" value="@ViewBag.OrgName" />
+                <input type="hidden" id="OrgId" name="OrganizationId" value="@Model.OrganizationId"/>
             </td>
             <td><input type="button" value="选择组织" onclick="f_SelectOrg()" /></td>
             <td></td>

@@ -11,9 +11,9 @@ namespace Zhuang.Security.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SecOrganization GetOrganizationById(string menuId)
+        public SecOrganization GetOrganizationById(string organizationId)
         {
-            return _dba.QueryEntity<SecOrganization>("Security.SecOrganization.GetSecOrganizationById", new { MenuId = menuId });
+            return _dba.QueryEntity<SecOrganization>("Security.SecOrganization.GetSecOrganizationById", new { OrganizationId = organizationId });
         }
 
         public void DeleteRecursive(string organizationId)
