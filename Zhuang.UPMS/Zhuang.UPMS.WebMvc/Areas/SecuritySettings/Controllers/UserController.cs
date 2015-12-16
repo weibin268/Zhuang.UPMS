@@ -30,7 +30,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             if (id != null)
             {
                 user = _userService.GetUserById(id);
-                string strSql = @"SELECT Name FROM dbo.Sec_Organization WHERE OrganizationId=#OrganizationId#";
+                string strSql = @"SELECT Name FROM Sec_Organization WHERE OrganizationId=#OrganizationId#";
                 string orgName = _dba.ExecuteScalar<string>(strSql, new { OrganizationId = user.OrganizationId });
 
                 ViewBag.OrgName = orgName;
