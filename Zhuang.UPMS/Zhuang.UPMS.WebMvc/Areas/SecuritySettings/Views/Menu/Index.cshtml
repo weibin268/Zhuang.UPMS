@@ -9,7 +9,7 @@
     <script type="text/javascript">
 
         jQuery("#treeMenu").tree({
-            url: '@Url.Content("~/Common/EasyUI/GetTree")' + "?sql=SecuritySettings.Menu.GetTree",
+            url: '@Url.Content("~/SecuritySettings/Menu/GetMenus")',
             onClick: function (node) {
                 jQuery("#iframe1").attr("src", '@Url.Content("~/SecuritySettings/Menu/List")?ParentId=' + node.id)
             }
