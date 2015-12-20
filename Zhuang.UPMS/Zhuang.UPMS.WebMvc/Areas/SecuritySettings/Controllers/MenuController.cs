@@ -115,29 +115,5 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             return Json(mjr);
         }
 
-        public ContentResult GetMenus()
-        {
-            ContentResult contentResult = new ContentResult();
-
-            var lsSecMenu = _dba.QueryEntities<SecMenu>("SecuritySettings.Menu.GetTree");
-
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
-
-            foreach (var item in lsSecMenu)
-            {
-                lsTree.Add(new TreeUrlReturnModel()
-                {
-                    id = item.MenuId,
-                    parentId = item.ParentId,
-                    text = item.Name,
-                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
-                    attributes = new { url = item.Url }
-                });
-            }
-
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree));
-            return contentResult;
-        }
-
     }
 }

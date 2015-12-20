@@ -9,15 +9,14 @@
     <script type="text/javascript">
 
         jQuery("#treeMenu").tree({
-            url: '@Url.Content("~/SecuritySettings/Menu/GetMenus")',
+            url: '@Url.Content("~/Common/EasyUI/GetTree")' + "?sql=SecuritySettings.Menu.GetTree",
             onClick: function (node) {
                 jQuery("#iframe1").attr("src", '@Url.Content("~/SecuritySettings/Menu/List")?ParentId=' + node.id)
             }
         });
 
 
-        function f_ReloadMenuTree()
-        {
+        function f_ReloadMenuTree() {
             jQuery("#treeMenu").tree("reload");
         }
 
