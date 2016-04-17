@@ -13,7 +13,7 @@ namespace Zhuang.Security.Services
 
         public SecOrganization Get(string id)
         {
-            return _dba.QueryEntity<SecOrganization>("Security.Organization.Get", new { OrganizationId = id });
+            return _dba.QueryEntity<SecOrganization>("Security.Organization.Get", new { Id = id });
         }
 
         public void DeleteRecursive(string id)

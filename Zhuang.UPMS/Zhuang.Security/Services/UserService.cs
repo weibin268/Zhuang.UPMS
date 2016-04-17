@@ -13,7 +13,7 @@ namespace Zhuang.Security.Services
 
         public SecUser Get(string id)
         {
-            return _dba.QueryEntity<SecUser>("Security.User.Get", new { UserId = id });
+            return _dba.QueryEntity<SecUser>("Security.User.Get", new { Id = id });
         }
 
         public SecUser GetUserByLoginName(string loginName)

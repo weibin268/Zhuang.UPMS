@@ -51,6 +51,7 @@
     <Compile Include="SecurityContext.cs" />
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\OrganizationService.cs" />
+    <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,11 +61,16 @@
     <Folder Include="Principal\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_Config\SqlCommands\Security\Menu.sqlserver.config" />
-    <EmbeddedResource Include="App_Config\SqlCommands\Security\Organization.sqlserver.config" />
+    <EmbeddedResource Include="App_Config\SqlCommands\Security\Menu.sqlserver.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_Config\SqlCommands\Security\Organization.sqlserver.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_Config\SqlCommands\Security\Menu.msql.config" />
     <EmbeddedResource Include="App_Config\SqlCommands\Security\Organization.mysql.config" />
     <EmbeddedResource Include="App_Config\SqlCommands\Security\User.mysql.config" />
+    <EmbeddedResource Include="App_Config\SqlCommands\Security\Role.sqlserver.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ namespace Zhuang.Security.Services
 
         public SecMenu Get(string id)
         {
-            return _dba.QueryEntity<SecMenu>("Security.Menu.Get", new { MenuId = id });
+            return _dba.QueryEntity<SecMenu>("Security.Menu.Get", new { Id = id });
         }
 
         public void DeleteRecursive(string menuId)
