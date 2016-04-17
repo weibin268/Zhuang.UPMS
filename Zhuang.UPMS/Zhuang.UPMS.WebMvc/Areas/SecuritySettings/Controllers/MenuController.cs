@@ -40,7 +40,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             model.ParentId = ParentId;
             if (id != null)
             {
-                model = _menuService.GetMenuById(id);
+                model = _menuService.Get(id);
             }
             return View(model);
         }

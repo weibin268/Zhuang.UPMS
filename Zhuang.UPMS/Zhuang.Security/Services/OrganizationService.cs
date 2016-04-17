@@ -11,20 +11,20 @@ namespace Zhuang.Security.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SecOrganization GetOrganizationById(string organizationId)
+        public SecOrganization Get(string id)
         {
-            return _dba.QueryEntity<SecOrganization>("Security.SecOrganization.GetSecOrganizationById", new { OrganizationId = organizationId });
+            return _dba.QueryEntity<SecOrganization>("Security.Organization.Get", new { OrganizationId = id });
         }
 
-        public void DeleteRecursive(string organizationId)
+        public void DeleteRecursive(string id)
         {
             string strSql = "select * from Sec_Organization where ParentId=#ParentId#";
-            var children = _dba.QueryEntities<SecOrganization>(strSql, new { ParentId = organizationId });
+            var children = _dba.QueryEntities<SecOrganization>(strSql, new { ParentId = id });
             foreach (var item in children)
             {
                 DeleteRecursive(item.OrganizationId);
             }
-            _dba.ExecuteNonQuery("Security.Organization.Delete", new { OrganizationId = organizationId });
+            _dba.ExecuteNonQuery("Security.Organization.Delete", new { OrganizationId = id });
         }
     }
 }

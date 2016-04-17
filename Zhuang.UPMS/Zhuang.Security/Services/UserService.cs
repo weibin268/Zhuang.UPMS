@@ -11,9 +11,9 @@ namespace Zhuang.Security.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SecUser GetUserById(string userId)
+        public SecUser Get(string id)
         {
-            return _dba.QueryEntity<SecUser>("Security.User.Get", new { UserId = userId });
+            return _dba.QueryEntity<SecUser>("Security.User.Get", new { UserId = id });
         }
 
         public SecUser GetUserByLoginName(string loginName)

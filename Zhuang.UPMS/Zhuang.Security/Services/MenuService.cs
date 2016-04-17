@@ -11,9 +11,9 @@ namespace Zhuang.Security.Services
     {
         DbAccessor _dba = DbAccessor.Get();
 
-        public SecMenu GetMenuById(string menuId)
+        public SecMenu Get(string id)
         {
-            return _dba.QueryEntity<SecMenu>("Security.Menu.Get", new { MenuId = menuId });
+            return _dba.QueryEntity<SecMenu>("Security.Menu.Get", new { MenuId = id });
         }
 
         public void DeleteRecursive(string menuId)
@@ -21,15 +21,15 @@ namespace Zhuang.Security.Services
             DeleteRecursive(menuId, _dba);
         }
 
-        public void DeleteRecursive(string menuId, DbAccessor dba)
+        public void DeleteRecursive(string id, DbAccessor dba)
         {
             string strSql = "select * from Sec_Menu where ParentId=#ParentId#";
-            var childrenMenu = dba.QueryEntities<SecMenu>(strSql, new { ParentId = menuId });
+            var childrenMenu = dba.QueryEntities<SecMenu>(strSql, new { ParentId = id });
             foreach (var item in childrenMenu)
             {
                 DeleteRecursive(item.MenuId, dba);
             }
-            dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = menuId });
+            dba.ExecuteNonQuery("Security.Menu.Delete", new { MenuId = id });
         }
     }
 }

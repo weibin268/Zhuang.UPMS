@@ -39,7 +39,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             model.ParentId = ParentId;
             if (id != null)
             {
-                model = _organizationService.GetOrganizationById(id);
+                model = _organizationService.Get(id);
             }
             return View(model);
         }

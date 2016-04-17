@@ -21,7 +21,7 @@ namespace Zhuang.UPMS.WebApi.Controllers
 
         public SecUser GetUserById(string userId)
         {
-            return _service.GetUserById(userId);
+            return _service.Get(userId);
         }
     }
 }
