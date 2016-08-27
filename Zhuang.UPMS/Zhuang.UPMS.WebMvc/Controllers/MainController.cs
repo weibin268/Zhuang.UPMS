@@ -19,8 +19,26 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         public ActionResult Index()
         {
 
-            var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
-            WHERE Status=1");
+            //var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
+            //WHERE Status=1");
+
+            //List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
+
+            //foreach (var item in lsSecMenu)
+            //{
+            //    lsTree.Add(new TreeUrlReturnModel()
+            //    {
+            //        id = item.MenuId,
+            //        parentId = item.ParentId,
+            //        text = item.Name,
+            //        state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
+            //        attributes = new TreeUrlReturnModel.Attributes(){ url = item.Url }
+            //    });
+            //}
+
+
+            var lsSecMenu = _dba.QueryEntities<SecPermission>(@"SELECT * FROM Sec_Permission 
+            WHERE Status=1 AND PermissionId<>'5CA421DA-0F25-4B3B-83AC-C11F15B3569E'").OrderBy(c=>c.Seq);
 
             List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
 
@@ -28,13 +46,14 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             {
                 lsTree.Add(new TreeUrlReturnModel()
                 {
-                    id = item.MenuId,
+                    id = item.PermissionId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
-                    attributes = new TreeUrlReturnModel.Attributes(){ url = item.Url }
+                    state =false ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
+                    attributes = new TreeUrlReturnModel.Attributes() { url = item.TypeValue }
                 });
             }
+
 
             ViewBag.TreeModels = TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree);
 

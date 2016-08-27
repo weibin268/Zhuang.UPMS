@@ -11,6 +11,7 @@ using Zhuang.Data;
 using Zhuang.Data.Common;
 using Zhuang.Data.SqlCommands.Store;
 using Zhuang.Models;
+using Zhuang.Security.Models;
 using Zhuang.Security.Services;
 
 namespace Zhuang.UPMS.WebApi.Controllers
