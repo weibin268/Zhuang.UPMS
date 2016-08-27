@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Models;
 using Zhuang.Security;
+using Zhuang.Security.Commons;
+using Zhuang.Security.Models;
 using Zhuang.Security.Services;
 using Zhuang.UPMS.WebMvc.App_Code;
 
@@ -57,7 +59,7 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
                         #region 校验数据
                         dynamic count = _dba.ExecuteScalar<dynamic>("SecuritySettings.User.CountByLoginName",
-                                           new { LoginName = model.LoginName, RecordStatus = RecordStatus.Active });
+                                           new { LoginName = model.LoginName, Status = (int)StatusType.Enabled });
 
                         if (count > 0)
                         {
@@ -68,9 +70,9 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                         #endregion
 
                         model.UserId = Guid.NewGuid().ToString();
-                        model.RecordStatus = RecordStatus.Active;
+                        model.Status = (int)StatusType.Enabled;
                         model.CreatedById = SecurityContext.Current.User.UserId;
-                        model.CreationDate = DateTime.Now;
+                        model.CreatedDate = DateTime.Now;
                         dba.Insert<SecUser>(model);
                     }
                     else
@@ -106,9 +108,8 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
             {
                 var user = new SecUser();
                 user.UserId = id;
-                user.RecordStatus = RecordStatus.Deleted;
-                _dba.UpdateFields(user, "RecordStatus");
-
+                user.Status =(int)StatusType.Deleted;
+                _dba.UpdateFields(user, "Status");
 
                 mjr.Success = true;
             }

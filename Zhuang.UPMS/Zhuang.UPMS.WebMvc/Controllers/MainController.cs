@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Models;
+using Zhuang.Security.Models;
 using Zhuang.Web.EasyUI.Models;
 
 namespace Zhuang.UPMS.WebMvc.Controllers
@@ -19,7 +20,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
         {
 
             var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
-            WHERE RecordStatus='Active'");
+            WHERE Status=1");
 
             List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
 
@@ -47,7 +48,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             ContentResult contentResult = new ContentResult();
 
             var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
-            WHERE RecordStatus='Active'");
+            WHERE Status='Active'");
 
             List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Zhuang.Data;
-using Zhuang.Models;
+using Zhuang.Security.Commons;
+using Zhuang.Security.Models;
 
 namespace Zhuang.Security.Services
 {
@@ -19,7 +20,7 @@ namespace Zhuang.Security.Services
         public SecUser GetUserByLoginName(string loginName)
         {
             return _dba.QueryEntity<SecUser>("Security.User.GetBy",
-                new { LoginName = loginName, RecordStatus = RecordStatus.Active });
+                new { LoginName = loginName, Status = (int)StatusType.Enabled });
         }
     }
 }

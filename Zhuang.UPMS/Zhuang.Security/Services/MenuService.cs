@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Zhuang.Models;
+using Zhuang.Security.Models;
 using Zhuang.Data;
 
 namespace Zhuang.Security.Services

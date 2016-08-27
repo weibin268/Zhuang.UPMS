@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using Zhuang.Models;
+using Zhuang.Security.Models;
 
 namespace Zhuang.Security
 {

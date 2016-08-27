@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Models;
 using Zhuang.Security;
+using Zhuang.Security.Models;
 using Zhuang.Security.Services;
 using Zhuang.Web.Utility.Images;
 

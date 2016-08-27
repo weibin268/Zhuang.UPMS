@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Models;
 using Zhuang.Security;
+using Zhuang.Security.Commons;
+using Zhuang.Security.Models;
 using Zhuang.Security.Services;
 using Zhuang.UPMS.WebMvc.App_Code;
 using Zhuang.Web.EasyUI.Models;
@@ -60,9 +62,9 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
                     if (model.OrganizationId == null)
                     {
                         model.OrganizationId = Guid.NewGuid().ToString();
-                        model.RecordStatus = RecordStatus.Active;
+                        model.Status = (int)StatusType.Enabled;
                         model.CreatedById = SecurityContext.Current.User.UserId;
-                        model.CreationDate = DateTime.Now;
+                        model.CreatedDate = DateTime.Now;
                         dba.ExecuteNonQuery("Security.Organization.Insert", model);
                     }
                     else
