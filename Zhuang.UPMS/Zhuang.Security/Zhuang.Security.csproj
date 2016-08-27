@@ -50,7 +50,6 @@
     <Compile Include="Models\SecPermission.cs" />
     <Compile Include="Models\SecRole.cs" />
     <Compile Include="Models\SecRolePermission.cs" />
-    <Compile Include="Models\SecRule.cs" />
     <Compile Include="Models\SecUser.cs" />
     <Compile Include="Models\SecUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

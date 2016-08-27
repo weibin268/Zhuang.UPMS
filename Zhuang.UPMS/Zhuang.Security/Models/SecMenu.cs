@@ -10,6 +10,7 @@ namespace Zhuang.Security.Models
         [Data.Annotations.Key]
         public string MenuId { get; set; }
         public string ParentId { get; set; }
+        public string PermissionId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
         public int? Seq { get; set; }

@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Zhuang.Security.Models
 {
-    public enum SecPermissionRefTable
+    public enum PermissionType
     {
-        Sec_Menu,
-        Sec_Button,
-        Sec_Rule
+        Module,
+        Page,
+        Element,
+        Rule,
     }
 
     public class SecPermission
@@ -18,10 +19,12 @@ namespace Zhuang.Security.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public int? Seq { get; set; }
-        public string Description { get; set; }
-        public string RefTable { get; set; }
-        public string RefRecordId { get; set; }
 
+        public string Type { get; set; }
+        public string TypeValue { get; set; }
+
+        public string Description { get; set; }
+        
         public int Status { get; set; }
         public string CreatedById { get; set; }
         public string ModifiedById { get; set; }
