@@ -37,12 +37,10 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             //    });
             //}
 
-
-            var lsSecMenu = SecurityContext.Current.PermissionManager.GetMenuList("left.menu");
-
+            
             List<TreeModel> lsTree = new List<TreeModel>();
 
-            foreach (var item in lsSecMenu)
+            foreach (var item in SecurityContext.Current.PermissionManager.GetMenuList("top.menu"))
             {
                 lsTree.Add(new TreeModel()
                 {
@@ -53,7 +51,6 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     attributes = new TreeModel.Attributes() { url = item.Url }
                 });
             }
-
 
             ViewBag.TreeModels = TreeModel.ToTreeModel(lsTree);
 
