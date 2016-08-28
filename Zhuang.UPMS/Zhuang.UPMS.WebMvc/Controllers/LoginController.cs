@@ -27,8 +27,6 @@ namespace Zhuang.UPMS.WebMvc.Controllers
 
             try
             {
-
-
                 var obj = Session["ValidateCode"];
                 if (obj == null || obj.ToString() != ValidateCode)
                 {
@@ -62,7 +60,10 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     }
                     else
                     {
-                        SecurityContext.Current = new SecurityContext() { User = user };
+                        SecurityContext.Current = new SecurityContext() { User = user};
+
+                        PermissionManager.Instance.Init(user.UserId);
+
                         //Session[SSessionIndex.IsAuthorizedForCKEditor] = true;
                         mjr.Success = true;
                     }
@@ -73,7 +74,6 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 mjr.Success = false;
                 mjr.Message = ex.Message;
             }
-
 
             return Json(mjr);
         }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zhuang.Data;
 using Zhuang.Models;
+using Zhuang.Security;
 using Zhuang.Security.Models;
 using Zhuang.Web.EasyUI.Models;
 
@@ -37,8 +38,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             //}
 
 
-            var lsSecMenu = _dba.QueryEntities<SecPermission>(@"SELECT * FROM Sec_Permission 
-            WHERE Status=1 AND PermissionId<>'5CA421DA-0F25-4B3B-83AC-C11F15B3569E'").OrderBy(c=>c.Seq);
+            var lsSecMenu = PermissionManager.Instance.GetMenuList();
 
             List<TreeModel> lsTree = new List<TreeModel>();
 
@@ -46,16 +46,16 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             {
                 lsTree.Add(new TreeModel()
                 {
-                    id = item.PermissionId,
+                    id = item.Id,
                     parentId = item.ParentId,
                     text = item.Name,
                     state =false ? TreeModel.State.open.ToString() : TreeModel.State.closed.ToString(),
-                    attributes = new TreeModel.Attributes() { url = item.TypeValue }
+                    attributes = new TreeModel.Attributes() { url = item.Url }
                 });
             }
 
 
-            ViewBag.TreeModels = TreeModel.ToTreeUrlReturnModel(lsTree);
+            ViewBag.TreeModels = TreeModel.ToTreeModel(lsTree);
 
             return View();
         }
@@ -83,7 +83,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeUrlReturnModel( lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeModel( lsTree));
             return contentResult;
         }
         #endregion

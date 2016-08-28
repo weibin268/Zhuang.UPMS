@@ -12,6 +12,7 @@ namespace Zhuang.Security.Models
         Rule,
     }
 
+    [Serializable]
     public class SecPermission
     {
         public string PermissionId { get; set; }

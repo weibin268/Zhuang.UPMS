@@ -28,7 +28,7 @@ namespace Zhuang.Web.EasyUI.Models
         public List<TreeModel> children { get; set; }
 
 
-        public static List<TreeModel> ToTreeUrlReturnModel(List<TreeModel> lsRawModel)
+        public static List<TreeModel> ToTreeModel(List<TreeModel> lsRawModel)
         {
             List<TreeModel> lsResult = new List<TreeModel>();
 

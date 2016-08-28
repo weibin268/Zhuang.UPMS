@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Zhuang.Security.Models
 {
+    [Serializable]
     [Zhuang.Data.Annotations.Table("Sec_Menu")]
     public class SecMenu
     {
