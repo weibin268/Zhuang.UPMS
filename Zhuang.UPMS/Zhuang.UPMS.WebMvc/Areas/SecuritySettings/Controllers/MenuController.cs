@@ -124,21 +124,21 @@ namespace Zhuang.UPMS.WebMvc.Areas.SecuritySettings.Controllers
 
             var lsSecMenu = _dba.QueryEntities<SecMenu>("SecuritySettings.Menu.GetTree");
 
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
+            List<TreeModel> lsTree = new List<TreeModel>();
 
             foreach (var item in lsSecMenu)
             {
-                lsTree.Add(new TreeUrlReturnModel()
+                lsTree.Add(new TreeModel()
                 {
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
+                    state = item.IsExpand ? TreeModel.State.open.ToString() : TreeModel.State.closed.ToString(),
                     attributes = new { url = item.Url }
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeUrlReturnModel(lsTree));
             return contentResult;
         }
 

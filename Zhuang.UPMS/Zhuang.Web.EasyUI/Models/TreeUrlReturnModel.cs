@@ -6,9 +6,7 @@ using System.Text;
 namespace Zhuang.Web.EasyUI.Models
 {
 
-
-
-    public class TreeUrlReturnModel
+    public class TreeModel
     {
         public class Attributes
         {
@@ -27,12 +25,12 @@ namespace Zhuang.Web.EasyUI.Models
         public string state { get; set; }
         public bool @checked { get; set; }
         public dynamic attributes { get; set; }
-        public List<TreeUrlReturnModel> children { get; set; }
+        public List<TreeModel> children { get; set; }
 
 
-        public static List<TreeUrlReturnModel> ToTreeUrlReturnModel(List<TreeUrlReturnModel> lsRawModel)
+        public static List<TreeModel> ToTreeUrlReturnModel(List<TreeModel> lsRawModel)
         {
-            List<TreeUrlReturnModel> lsResult = new List<TreeUrlReturnModel>();
+            List<TreeModel> lsResult = new List<TreeModel>();
 
             lsResult = lsRawModel.FindAll(c =>
             {
@@ -46,7 +44,7 @@ namespace Zhuang.Web.EasyUI.Models
             return lsResult;
         }
 
-        private static List<TreeUrlReturnModel> RecursiveChildren(List<TreeUrlReturnModel> lsRawModel, string parentId)
+        private static List<TreeModel> RecursiveChildren(List<TreeModel> lsRawModel, string parentId)
         {
             var children = lsRawModel.FindAll(cc => { return cc.parentId == parentId;});
 

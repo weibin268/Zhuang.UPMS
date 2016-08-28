@@ -40,22 +40,22 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             var lsSecMenu = _dba.QueryEntities<SecPermission>(@"SELECT * FROM Sec_Permission 
             WHERE Status=1 AND PermissionId<>'5CA421DA-0F25-4B3B-83AC-C11F15B3569E'").OrderBy(c=>c.Seq);
 
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
+            List<TreeModel> lsTree = new List<TreeModel>();
 
             foreach (var item in lsSecMenu)
             {
-                lsTree.Add(new TreeUrlReturnModel()
+                lsTree.Add(new TreeModel()
                 {
                     id = item.PermissionId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state =false ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
-                    attributes = new TreeUrlReturnModel.Attributes() { url = item.TypeValue }
+                    state =false ? TreeModel.State.open.ToString() : TreeModel.State.closed.ToString(),
+                    attributes = new TreeModel.Attributes() { url = item.TypeValue }
                 });
             }
 
 
-            ViewBag.TreeModels = TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree);
+            ViewBag.TreeModels = TreeModel.ToTreeUrlReturnModel(lsTree);
 
             return View();
         }
@@ -69,21 +69,21 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             var lsSecMenu = _dba.QueryEntities<SecMenu>(@"SELECT * FROM Sec_Menu
             WHERE Status='Active'");
 
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
+            List<TreeModel> lsTree = new List<TreeModel>();
 
             foreach (var item in lsSecMenu)
             {
-                lsTree.Add(new TreeUrlReturnModel()
+                lsTree.Add(new TreeModel()
                 {
                     id = item.MenuId,
                     parentId = item.ParentId,
                     text = item.Name,
-                    state = item.IsExpand ? TreeUrlReturnModel.State.open.ToString() : TreeUrlReturnModel.State.closed.ToString(),
+                    state = item.IsExpand ? TreeModel.State.open.ToString() : TreeModel.State.closed.ToString(),
                     attributes = new { url = item.Url }
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel( lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeUrlReturnModel( lsTree));
             return contentResult;
         }
         #endregion

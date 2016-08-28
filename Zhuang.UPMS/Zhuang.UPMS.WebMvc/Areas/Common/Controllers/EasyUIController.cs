@@ -39,20 +39,20 @@ namespace Zhuang.UPMS.WebMvc.Areas.Common.Controllers
 
             var dtTree = _dba.QueryDataTable(strSql);
 
-            List<TreeUrlReturnModel> lsTree = new List<TreeUrlReturnModel>();
+            List<TreeModel> lsTree = new List<TreeModel>();
 
             foreach (DataRow row in dtTree.Rows)
             {
-                lsTree.Add(new TreeUrlReturnModel()
+                lsTree.Add(new TreeModel()
                 {
                     id = row["id"].ToString(),
                     parentId = row["parentId"].ToString(),
                     text = row["text"].ToString(),
-                    state = TreeUrlReturnModel.State.open.ToString()
+                    state = TreeModel.State.open.ToString()
                 });
             }
 
-            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeUrlReturnModel.ToTreeUrlReturnModel(lsTree));
+            contentResult.Content = Newtonsoft.Json.JsonConvert.SerializeObject(TreeModel.ToTreeUrlReturnModel(lsTree));
             return contentResult;
         }
 

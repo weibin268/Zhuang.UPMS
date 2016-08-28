@@ -35,7 +35,7 @@ namespace Zhuang.UPMS.WebMvc.App_Code
                 }
             }
 
-            DataGridUrlReturnModel model = new DataGridUrlReturnModel();
+            DataGridModel model = new DataGridModel();
 
             int totalRowCount = 0;
             model.rows = dba.PageQueryDataTable(strSql, strOrderBy, page, rows, out totalRowCount, dicParam);
