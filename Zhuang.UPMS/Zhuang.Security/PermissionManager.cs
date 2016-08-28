@@ -7,44 +7,21 @@ using Zhuang.Security.Services;
 
 namespace Zhuang.Security
 {
-    [Serializable]
     public class PermissionManager
     {
         PermissionService _service;
         IList<SecPermission> _permissionList;
         string _userId;
 
-        private static PermissionManager _instance;
-        private static object _objLock = new object();
-
-
-        public static PermissionManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (_objLock)
-                    {
-                        if (_instance == null)
-                        {
-                            _instance = new PermissionManager();
-                        }
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        private PermissionManager()
-        {
-
-        }
-
-        public void Init(string userId)
+        public PermissionManager(string userId)
         {
             _userId = userId;
             _service = new PermissionService();
+            Init();
+        }
+
+        public void Init()
+        {
             _permissionList = _service.GetListByUserId(_userId);
         }
 

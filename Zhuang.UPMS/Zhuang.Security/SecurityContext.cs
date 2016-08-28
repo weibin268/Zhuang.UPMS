@@ -14,6 +14,14 @@ namespace Zhuang.Security
 
         public SecUser User { get; set; }
 
+        public PermissionManager PermissionManager
+        {
+            get
+            {
+                return new PermissionManager(User.UserId);
+            }
+        }
+
         public static SecurityContext Current
         {
             get
