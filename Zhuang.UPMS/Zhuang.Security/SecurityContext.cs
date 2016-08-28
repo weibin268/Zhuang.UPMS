@@ -12,7 +12,20 @@ namespace Zhuang.Security
     {
         private const string Key = "SecurityContext";
 
-        public SecUser User { get; set; }
+        private SecUser _user;
+
+        public SecUser User
+        {
+            get
+            {
+                return _user;
+            }
+        }
+
+        public SecurityContext(SecUser user)
+        {
+            _user = user;
+        }
 
         public PermissionManager PermissionManager
         {

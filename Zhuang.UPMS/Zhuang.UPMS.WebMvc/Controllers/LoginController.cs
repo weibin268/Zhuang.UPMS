@@ -60,7 +60,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
                     }
                     else
                     {
-                        SecurityContext.Current = new SecurityContext() { User = user };
+                        SecurityContext.Current = new SecurityContext(user);
 
                         //Session[SSessionIndex.IsAuthorizedForCKEditor] = true;
                         mjr.Success = true;
