@@ -50,13 +50,45 @@ namespace Zhuang.Security
 
         public IList<MenuModel> GetMenuList()
         {
+            return GetMenuList(null);
+        }
+
+        public IList<MenuModel> GetMenuList(string moduleCode)
+        {
             IList<MenuModel> result = new List<MenuModel>();
 
-            var pMenu = _permissionList
+            var allPermissionList = _permissionList
                 .Where(c => { return (c.Type == PermissionType.Module.ToString() || c.Type == PermissionType.Page.ToString()); })
-                .OrderBy(c => c.Seq);
+                .OrderBy(c => c.Seq).ToList();
 
-            foreach (var p in pMenu)
+            List<SecPermission> tempPermissionList = null;
+            if (!string.IsNullOrEmpty(moduleCode))
+            {
+                tempPermissionList = new List<SecPermission>();
+                var momdule = allPermissionList.Where(c => c.Code == moduleCode).FirstOrDefault();
+
+                Action<SecPermission> fun =null;
+
+                fun = (c) =>
+                {
+                    var subPermissionList = allPermissionList.Where(p => p.ParentId == c.PermissionId).ToList();
+
+                    if (subPermissionList.Count == 0)
+                        return;
+
+                    tempPermissionList.AddRange(subPermissionList);
+                    foreach (var p in subPermissionList)
+                    {
+                        fun(p);
+                    }
+                };
+
+                fun(momdule);
+            }
+
+            tempPermissionList = tempPermissionList ?? allPermissionList;
+
+            foreach (var p in tempPermissionList)
             {
                 result.Add(new MenuModel()
                 {

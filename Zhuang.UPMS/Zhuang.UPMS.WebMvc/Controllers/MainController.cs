@@ -38,7 +38,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             //}
 
 
-            var lsSecMenu = PermissionManager.Instance.GetMenuList();
+            var lsSecMenu = PermissionManager.Instance.GetMenuList("left.menu");
 
             List<TreeModel> lsTree = new List<TreeModel>();
 
