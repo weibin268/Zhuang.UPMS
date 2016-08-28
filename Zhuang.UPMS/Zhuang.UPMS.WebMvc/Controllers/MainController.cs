@@ -40,7 +40,7 @@ namespace Zhuang.UPMS.WebMvc.Controllers
             
             List<TreeModel> lsTree = new List<TreeModel>();
 
-            foreach (var item in SecurityContext.Current.PermissionManager.GetMenuList("top.menu"))
+            foreach (var item in SecurityContext.Current.PermissionManager.GetMenuList("left.menu"))
             {
                 lsTree.Add(new TreeModel()
                 {
