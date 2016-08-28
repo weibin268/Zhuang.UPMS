@@ -43,6 +43,7 @@ namespace Zhuang.Security
             if (!string.IsNullOrEmpty(moduleCode))
             {
                 tempPermissionList = new List<SecPermission>();
+
                 var momdule = allPermissionList.Where(c => c.Code == moduleCode).FirstOrDefault();
 
                 Action<SecPermission> fun =null;
@@ -61,7 +62,10 @@ namespace Zhuang.Security
                     }
                 };
 
-                fun(momdule);
+                if (momdule != null)
+                {
+                    fun(momdule);
+                }
             }
 
             tempPermissionList = tempPermissionList ?? allPermissionList;
