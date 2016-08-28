@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DataGridUrlReturnModel.cs" />
-    <Compile Include="Models\TreeUrlReturnModel.cs" />
+    <Compile Include="Models\DataGridModel.cs" />
+    <Compile Include="Models\TreeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
