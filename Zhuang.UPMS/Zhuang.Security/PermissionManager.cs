@@ -10,21 +10,25 @@ namespace Zhuang.Security
     public class PermissionManager
     {
         PermissionService _service;
+        IList<SecPermission> _permissionList;
+        string _userId;
 
-        public PermissionManager()
+        public PermissionManager(string userId)
         {
+            _userId = userId;
             _service = new PermissionService();
+            _permissionList = _service.GetListByUserId(_userId);
         }
 
         public IList<MenuModel> GetMenuList(string userId)
         {
             IList<MenuModel> result = new List<MenuModel>();
 
-            var permissions = _service.GetListByUserId(userId)
+            var pMenu = _service.GetListByUserId(userId)
                 .Where(c => { return (c.Type == PermissionType.Module.ToString() || c.Type == PermissionType.Page.ToString()); })
                 .OrderBy(c => c.Seq);
 
-            foreach (var p in permissions)
+            foreach (var p in pMenu)
             {
                 result.Add(new MenuModel()
                 {
