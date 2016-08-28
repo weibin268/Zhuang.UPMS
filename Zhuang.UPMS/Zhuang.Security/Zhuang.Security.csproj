@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\Enums.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\SecMenu.cs" />
     <Compile Include="Models\SecOrganization.cs" />
     <Compile Include="Models\SecPermission.cs" />
@@ -52,10 +53,12 @@
     <Compile Include="Models\SecRolePermission.cs" />
     <Compile Include="Models\SecUser.cs" />
     <Compile Include="Models\SecUserRole.cs" />
+    <Compile Include="PermissionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityContext.cs" />
     <Compile Include="Services\MenuService.cs" />
     <Compile Include="Services\OrganizationService.cs" />
+    <Compile Include="Services\PermissionService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
