@@ -7,6 +7,7 @@ using Zhuang.Security.Services;
 
 namespace Zhuang.Security
 {
+    [Serializable]
     public class PermissionManager
     {
         PermissionService _service;

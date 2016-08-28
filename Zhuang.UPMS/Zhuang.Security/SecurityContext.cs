@@ -14,26 +14,9 @@ namespace Zhuang.Security
 
         private SecUser _user;
 
-        public SecUser User
-        {
-            get
-            {
-                return _user;
-            }
-        }
+        public SecUser User { get; set; }
 
-        public SecurityContext(SecUser user)
-        {
-            _user = user;
-        }
-
-        public PermissionManager PermissionManager
-        {
-            get
-            {
-                return new PermissionManager(User.UserId);
-            }
-        }
+        public PermissionManager PermissionManager { get; set; }
 
         public static SecurityContext Current
         {

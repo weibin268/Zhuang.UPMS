@@ -7,12 +7,14 @@ using Zhuang.Security.Models;
 
 namespace Zhuang.Security.Services
 {
+    [Serializable]
     public class PermissionService
     {
-        DbAccessor _dba = DbAccessor.Get();
-
+        
         public IList<SecPermission> GetListByUserId(string userId)
         {
+            DbAccessor dba = DbAccessor.Get();
+
             string strSql = @"SELECT  *
             FROM    Sec_Permission a
             WHERE a.Status=1 and  EXISTS ( SELECT NULL
@@ -23,7 +25,7 @@ namespace Zhuang.Security.Services
                                                        WHERE    ur.UserId = #UserId# ) )
             ";
 
-            return _dba.QueryEntities<SecPermission>(strSql, new { UserId = userId });
+            return dba.QueryEntities<SecPermission>(strSql, new { UserId = userId });
         }
     }
 }
