@@ -25,7 +25,7 @@ namespace Zhuang.Web.EasyUI.Models
         public string state { get; set; }
         public bool @checked { get; set; }
         public dynamic attributes { get; set; }
-        public List<TreeModel> children { get; set; }
+        public IList<TreeModel> children { get; set; }
 
 
         public static List<TreeModel> ToTreeModel(List<TreeModel> lsRawModel)
