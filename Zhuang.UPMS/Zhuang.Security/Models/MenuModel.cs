@@ -52,7 +52,5 @@ namespace Zhuang.Security.Models
 
             return lsResult;
         }
-
-
     }
 }
