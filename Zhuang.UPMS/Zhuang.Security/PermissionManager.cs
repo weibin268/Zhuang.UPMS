@@ -84,5 +84,52 @@ namespace Zhuang.Security
 
             return result;
         }
+
+        public bool HasElementPermission(string elementCode)
+        {
+            bool result = false;
+
+            var element = GetElement(elementCode);
+
+            if (element != null)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public string GetElementRule(string elementCode)
+        {
+            var element = GetElement(elementCode);
+            if (element == null) return null;
+
+            var rule = element.RuleList.OrderBy(c => c.Priority).FirstOrDefault();
+            if (rule == null)
+                return null;
+            else
+                return rule.Value;
+        }
+
+        private ElementModel GetElement(string elementCode)
+        {
+
+            var pElement = _permissionList.Where(c => c.Type == PermissionType.Element.ToString() && c.Code == elementCode).FirstOrDefault();
+
+            if (pElement == null) return null;
+
+            ElementModel result = new ElementModel() { Id = pElement.PermissionId, Code = pElement.Code, Name = pElement.Name };
+
+            result.RuleList = new List<RuleModel>();
+
+            var pRuleList = _permissionList.Where(c => c.Type == PermissionType.Rule.ToString() && c.ParentId == result.Id).ToList();
+
+            pRuleList.ForEach(c =>
+            {
+                result.RuleList.Add(new RuleModel() { Priority = c.Seq, Value = c.TypeValue });
+            });
+
+            return result;
+        }
     }
 }

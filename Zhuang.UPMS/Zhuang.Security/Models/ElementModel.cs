@@ -7,8 +7,12 @@ namespace Zhuang.Security.Models
 {
     public class ElementModel
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
+
         public string Code { get; set; }
-        public string Role { get; set; }
+
+        public IList<RuleModel> RuleList { get; set; }
     }
 }

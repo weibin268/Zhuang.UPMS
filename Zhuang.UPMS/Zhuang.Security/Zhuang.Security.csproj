@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\Enums.cs" />
+    <Compile Include="Models\RuleModel.cs" />
     <Compile Include="Models\ElementModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\SecMenu.cs" />
