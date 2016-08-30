@@ -46,9 +46,9 @@ namespace Zhuang.Security
 
                 var momdule = allPermissionList.Where(c => c.Code == moduleCode).FirstOrDefault();
 
-                Action<SecPermission> fun =null;
+                Action<SecPermission> funRecursive =null;
 
-                fun = (c) =>
+                funRecursive = (c) =>
                 {
                     var subPermissionList = allPermissionList.Where(p => p.ParentId == c.PermissionId).ToList();
 
@@ -58,13 +58,13 @@ namespace Zhuang.Security
                     tempPermissionList.AddRange(subPermissionList);
                     foreach (var p in subPermissionList)
                     {
-                        fun(p);
+                        funRecursive(p);
                     }
                 };
 
                 if (momdule != null)
                 {
-                    fun(momdule);
+                    funRecursive(momdule);
                 }
             }
 
