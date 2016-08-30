@@ -32,34 +32,40 @@ namespace Zhuang.Web.EasyUI.Models
         {
             List<TreeModel> lsResult = new List<TreeModel>();
 
+            //得到所有一级节点
             lsResult = lsRawModel.FindAll(c =>
             {
                 return !lsRawModel.Exists(cc => cc.id == c.parentId);
             });
 
-            lsResult.ForEach(c=> {
-                c.children = RecursiveChildren(lsRawModel, c.id);
+            //定放递归函数
+            Func<string, List<TreeModel>> funRecursive = null;
+            funRecursive = (parentId) =>
+            {
+                var children = lsRawModel.FindAll(cc => { return cc.parentId == parentId; });
+
+                //如是叶子节点
+                if (children.Count == 0)
+                {
+                    lsRawModel.Find(c => c.id == parentId).state = State.open.ToString();
+                }
+
+                children.ForEach(c =>
+                {
+                    c.children = funRecursive(c.id);
+                });
+
+                return children;
+            };
+
+            //递归处理所有子孙节点
+            lsResult.ForEach(c =>
+            {
+                c.children = funRecursive(c.id);
             });
 
             return lsResult;
         }
-
-        private static List<TreeModel> RecursiveChildren(List<TreeModel> lsRawModel, string parentId)
-        {
-            var children = lsRawModel.FindAll(cc => { return cc.parentId == parentId;});
-
-            //如是叶子节点
-            if (children.Count == 0)
-            {
-                lsRawModel.Find(c => c.id == parentId).state = State.open.ToString();
-            }
-
-            children.ForEach(c =>
-            {
-                c.children = RecursiveChildren(lsRawModel, c.id);
-            });
-
-            return children;
-        }
+        
     }
 }
