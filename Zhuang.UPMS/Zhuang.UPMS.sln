@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.WebApi", "Zhuang.UPMS.WebApi\Zhuang.UPMS.WebApi.csproj", "{BA8F57B7-E97A-40F1-94AE-26C44EA85265}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.BLL", "Zhuang.UPMS.BLL\Zhuang.UPMS.BLL.csproj", "{E31A2396-A28C-4DBB-A4D2-ECB9A3AC4AF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.Security", "Zhuang.Security\Zhuang.Security.csproj", "{37D969A9-0AFB-4F66-9E63-44ECE6895782}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.WebApp", "Zhuang.UPMS.WebApp\Zhuang.UPMS.WebApp.csproj", "{9567B620-215F-4A1F-A46F-05FC2B256F59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.UPMS.WebMvc", "Zhuang.UPMS.WebMvc\Zhuang.UPMS.WebMvc.csproj", "{4E504A0D-5575-47D8-A5F7-2E6364A06BEF}"
 EndProject
@@ -37,10 +35,6 @@ Global
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37D969A9-0AFB-4F66-9E63-44ECE6895782}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9567B620-215F-4A1F-A46F-05FC2B256F59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E504A0D-5575-47D8-A5F7-2E6364A06BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E504A0D-5575-47D8-A5F7-2E6364A06BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E504A0D-5575-47D8-A5F7-2E6364A06BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
