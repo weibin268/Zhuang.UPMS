@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.Web.EasyUI", "Zhuang
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhuang.Web.ZTree", "Zhuang.Web.ZTree\Zhuang.Web.ZTree.csproj", "{E16C466F-90DE-4A74-BC54-45253D6BB5E4}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Zhuang.UPMS.WebApp", "Zhuang.UPMS.WebApp\Zhuang.UPMS.WebApp.xproj", "{CDDF141E-6E38-4AEF-8214-92CE989A7F64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E16C466F-90DE-4A74-BC54-45253D6BB5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E16C466F-90DE-4A74-BC54-45253D6BB5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E16C466F-90DE-4A74-BC54-45253D6BB5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDF141E-6E38-4AEF-8214-92CE989A7F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDF141E-6E38-4AEF-8214-92CE989A7F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDF141E-6E38-4AEF-8214-92CE989A7F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDF141E-6E38-4AEF-8214-92CE989A7F64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
