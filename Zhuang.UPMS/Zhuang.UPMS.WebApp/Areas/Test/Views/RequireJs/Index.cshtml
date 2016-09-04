@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <input type="button" id="btn1" value="bnt1" />
+
+    <script type="text/javascript" src="/js/require.js" data-main="/js/app"></script>
+    <script type="text/javascript">
+
+        require(["jq"], function (jq) {
+
+            $("#btn1").click(function () {
+
+                alert(123);
+            });
+        });
+
+    </script>
+</body>
+</html>
