@@ -7,6 +7,6 @@
     //never includes a ".js" extension since
     //the paths config could be for a directory.
     paths: {
-        'jq': 'jquery.js'
+        'jq': 'jquery'
     }
 });
