@@ -268,7 +268,10 @@
 
             if (settings.compatibility) {
                 $ulTree[0].style.width = "100%";
-                $divSearchBox[0].style.width = "100%";
+
+                if (settings.enableSearch) {
+                    $divSearchBox[0].style.width = "100%";
+                }
             }
             
             $.fn.zTree.init($ulTree, settings.setting, settings.zNodes);
