@@ -272,6 +272,7 @@
                 if (settings.enableSearch) {
                     $divSearchBox[0].style.width = "100%";
                 }
+
             }
             
             $.fn.zTree.init($ulTree, settings.setting, settings.zNodes);
