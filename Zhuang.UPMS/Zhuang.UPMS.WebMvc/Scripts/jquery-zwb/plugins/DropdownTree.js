@@ -233,6 +233,11 @@
                 "id": treePanelId, "class": "tree-panel",
                 "style": "display: none; position: absolute;width:" + settings.width + "px"
             });
+
+
+            if (!settings.autoWidth) {
+                $divTreePanel.css("overflow", "auto");
+            }
             
             var treeId = "ulTree";
             while ($("#" + treeId).length > 0) {
